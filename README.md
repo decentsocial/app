@@ -1,3 +1,29 @@
+# installation
+
+```
+npm i 
+cd client && npm i
+```
+
+# build
+
+```
+cd client && npm run build
+```
+
+# development
+
+build client
+
+start server with
+
+```
+npm start
+```
+
+
+# old 
+
 ## locally
 
 ```
@@ -11,5 +37,5 @@ docker-compose up --build -d
 
 # or
 
-ssh root@cf 'cd productlistings.app; git pull; docker-compose up --build -d'
+ssh root@cf 'cd decent-social-app; git pull; docker-compose up --build -d'
 ```
