@@ -15,6 +15,14 @@ const events = {
 }
 
 const Home = (props) => {
+  console.log('window.location.hash', window.location.hash)
+  if (window.location.hash) {
+    return (
+      <div class='container'>
+        <h1 class='title'>Logging you in...</h1>
+      </div>
+    )
+  }
   return (
     <div class='container py-5'>
       <h1 class='title mb-5'>Welcome to Decent</h1>
