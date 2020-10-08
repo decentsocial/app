@@ -33,6 +33,7 @@ export default class App extends Component {
   }
 
   render () {
+    if (window.location.hash !== '') return null
     return (
       <div id='app' class='mt-5'>
         <Header user={this.state.user} />
