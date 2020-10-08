@@ -3,6 +3,7 @@ import { Router } from 'preact-router'
 
 import * as ApiService from '../api-service'
 import Header from './header'
+import style from './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // Code-splitting is automated for `routes` directory
@@ -32,7 +33,7 @@ export default class App extends Component {
   render () {
     if (window.location.hash !== '') return null
     return (
-      <div id='app' class='mt-5'>
+      <div id={style.app} class=''>
         <Header user={this.state.user} />
         <Router>
           <Home path='/' user={this.state.user} />
