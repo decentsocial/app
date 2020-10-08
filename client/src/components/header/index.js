@@ -11,8 +11,8 @@ const Header = (props) => (
           <img class='' src='/assets/icons/favicon-32x32.png' alt='' style='height: 2rem; margin-right: 0.5em;' />
         </a>
         <div class='navbar-nav'>
-          {props.user && props.user.picture && <img src={props.user.picture} style='height: 2.5em; border-radius: 50%;' />}
-          <span onClick={isLoggedIn() ? logout : login} class='nav-link btn btn-primary' href='/'>{isLoggedIn() ? 'Logout' : 'Login'}</span>
+          {props.user && props.user.picture && <img src={props.user.picture} class='px-3' style='height: 2.5em; border-radius: 50%;' />}
+          {props.user !== null && <a href='#' onClick={isLoggedIn() ? logout : login} class='nav-link btn btn-sm'>{isLoggedIn() ? 'Logout' : 'Login'}</a>}
         </div>
       </div>
     </nav>
