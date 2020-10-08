@@ -6,9 +6,8 @@ COPY package.json package-lock.json ./
 # RUN apk add --no-cache make gcc g++ python
 
 RUN npm ci --prod
-WORKDIR /app/client
 RUN npm ci --prod
-RUN npm run build
+RUN cd client; npm run build
 
 # Then we copy over the modules from above onto a `slim` image
 FROM mhart/alpine-node:slim-12
