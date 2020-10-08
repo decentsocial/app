@@ -8,7 +8,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --prod
 
 COPY . .
-RUN npm i
+RUN cd client && npm i
 RUN cd client && npm run build
 
 # Then we copy over the modules from above onto a `slim` image
