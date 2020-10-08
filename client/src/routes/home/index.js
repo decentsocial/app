@@ -1,6 +1,6 @@
 import { h } from 'preact'
-import { Link } from 'preact-router/match'
-import { login, getAccessToken } from '../../auth-service'
+import { login } from '../../auth-service'
+import { updateUserSettings } from '../../api-service'
 
 const events = {
   handleSubmitSetup: (event) => {
@@ -13,16 +13,7 @@ const events = {
     console.log('twitterHandle', twitterHandle)
     console.log('followingList', followingList)
     if (twitterHandle) {
-      window.fetch(/decent/.test(window.location.host) ? '/user/settings' : 'http://localhost:3000/user/settings', {
-        method: 'put',
-        headers: {
-          Authorization: `Bearer ${getAccessToken()}`,
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ twitterHandle })
-      })
-        .then(res => res.json())
+      updateUserSettings({ twitterHandle })
         .then(settings => {
           console.log('updated settings', settings)
           window.location.reload()
@@ -81,7 +72,7 @@ const Home = (props) => {
           <h1 class='title'>You are set</h1>
         </div>
       )}
-      {/localhost/.test(window.location.host) && <pre class=''>{JSON.stringify(props.user, null, 2)}</pre>}
+      <pre class=''>{JSON.stringify(props.user, null, 2)}</pre>
     </div>
   )
 }
