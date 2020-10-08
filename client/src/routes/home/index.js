@@ -38,7 +38,7 @@ const Home = (props) => {
     <div class='container py-5'>
       {/* {(!props.user || (props.user && props.user.setupComplete)) &&
         <h1 class='title mb-5'>Welcome to Decent</h1>} */}
-      {props.user === null &&
+      {!props.user &&
         <p><a href='#' onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>}
       {props.user && !props.user.setupComplete && (
         <form onSubmit={events.handleSubmitSetup}>
@@ -73,6 +73,7 @@ const Home = (props) => {
         </div>
       )}
       {props.user && <pre class=''>{JSON.stringify(props.user, null, 2)}</pre>}
+      {props.user}
     </div>
   )
 }

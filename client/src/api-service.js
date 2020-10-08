@@ -1,7 +1,7 @@
 import { getAccessToken } from './auth-service'
 
 const prod = !!/decent/.test(window.location.host)
-const base = url => prod ? url : `http://localhost:3000${url}`
+const base = url => (prod || !url.startsWith('http')) ? url : `http://localhost:3000${url}`
 const json = (path, opt) => window.fetch(base(path), opt).then(res => res.json())
 const options = ({ Authorization = `Bearer ${getAccessToken()}`, method = 'get', body } = {}) => ({
   method,
@@ -16,16 +16,16 @@ const options = ({ Authorization = `Bearer ${getAccessToken()}`, method = 'get',
 export async function getUserInfo () {
   if (!getAccessToken()) {
     console.log('no access token')
-    return
+    throw new Error('no access token')
   }
   return json(base('/user/info'), options())
 }
 
 export async function updateUserSettings ({ twitterHandle } = {}) {
-  if (!getAccessToken()) return
+  if (!getAccessToken()) throw new Error('no access token')
   if (!twitterHandle) {
     console.log('no twitterHandle')
-    return
+    throw new Error('no twitter handle')
   }
   return json(base('/user/settings'), options({
     method: 'put',

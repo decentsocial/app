@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { login, logout, isLoggedIn } from '../auth-service'
+import { login, logout } from '../auth-service'
 
 const Header = (props) => {
   console.log('header props.user', props.user)
@@ -12,7 +12,7 @@ const Header = (props) => {
           </a>
           <div class='navbar-nav'>
             {props.user && props.user.picture && <img src={props.user.picture} class='px-3' style='height: 2.5em; border-radius: 50%;' />}
-            <a href='#' onClick={isLoggedIn() ? logout : login} class='nav-link btn btn-sm'>{isLoggedIn() ? 'Logout' : 'Login'}</a>
+            <a href='#' onClick={props.user ? logout : login} class='nav-link btn btn-sm'>{props.user ? 'Logout' : 'Login'}</a>
           </div>
         </div>
       </nav>
