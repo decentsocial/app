@@ -48,7 +48,7 @@ const Setup = (props) => {
           <small id='followingListHelp' class='form-text text-muted'>You can always change this later on, no worries.</small>
         </div>
       </div>
-      <div class='col-sm-12'>
+      <div class='col-sm-12 p-0'>
         <button class='btn btn-md btn-primary'>Complete setup</button>
       </div>
     </form>

@@ -24,8 +24,6 @@ const Home = (props) => {
           <h1 class='title'>{props.user.nickname},<br />you are all set</h1>
         </div>
       )}
-      {props.user && <pre class=''>{JSON.stringify(props.user, null, 2)}</pre>}
-      {props.user}
     </div>
   )
 }

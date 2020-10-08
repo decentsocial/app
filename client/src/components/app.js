@@ -40,6 +40,7 @@ export default class App extends Component {
           <Home path='/' user={this.state.user} />
           <Settings path='/settings' user={this.state.user} />
         </Router>
+        {this.state.user && <pre class='container mt-5'>{JSON.stringify(this.state.user, null, 2)}</pre>}
       </div>
     )
   }
