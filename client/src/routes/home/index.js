@@ -69,7 +69,7 @@ const Home = (props) => {
       )}
       {props.user && props.user.setupComplete && (
         <div class='py-5'>
-          <h1 class='title'>You are set</h1>
+          <h1 class='title'>{props.user.nickname},<br />you are set</h1>
         </div>
       )}
       <pre class=''>{JSON.stringify(props.user, null, 2)}</pre>
