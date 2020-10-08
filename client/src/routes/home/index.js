@@ -1,16 +1,31 @@
 import { h } from 'preact'
 import { Link } from 'preact-router/match'
-import { login } from '../../auth-service'
+import { login, getAccessToken } from '../../auth-service'
 
 const events = {
   handleSubmitSetup: (event) => {
+    event.preventDefault()
+
     let twitterHandle = event.target.querySelector('#twitterHandle').value
     let followingList = event.target.querySelector('#followingList').value
     twitterHandle = twitterHandle.replace('@', '')
     followingList = followingList.replace(/@/gi, '').split(' ').filter(Boolean)
     console.log('twitterHandle', twitterHandle)
     console.log('followingList', followingList)
-    event.preventDefault()
+    if (twitterHandle) {
+      window.fetch(/decent/.test(window.location.host) ? '/user/settings' : 'http://localhost:3000/user/settings', {
+        method: 'put',
+        headers: { Authorization: `Bearer ${getAccessToken()}` },
+        body: JSON.stringify({ twitterHandle })
+      })
+        .then(res => res.json())
+        .then(settings => {
+          console.log('updated settings', settings)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
   }
 }
 
