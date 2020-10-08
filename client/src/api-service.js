@@ -15,14 +15,14 @@ const options = ({ Authorization = `Bearer ${getAccessToken()}`, method = 'get',
 export async function getUserInfo () {
   if (!getAccessToken()) {
     console.log('no access token')
-    return null
+    return
   }
   return window.fetch(base('/user/info'), options())
     .then(res => res.json())
 }
 
 export async function updateUserSettings ({ twitterHandle } = {}) {
-  if (!getAccessToken()) return null
+  if (!getAccessToken()) return
   if (!twitterHandle) {
     console.log('no twitterHandle')
     return
