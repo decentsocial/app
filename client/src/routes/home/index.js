@@ -59,7 +59,7 @@ const Home = (props) => {
               </div>
             </div>
             <div class='col-lg-6 form-group mb-5'>
-              <p class='lead'>If you prefer, enter below the users you want to follow</p>
+              <p class='lead mt-3'>If you prefer, enter below the users you want to follow</p>
               <textarea class='form-control' id='followingList' rows='1'>
               @elonmusk
               @lexfridman
