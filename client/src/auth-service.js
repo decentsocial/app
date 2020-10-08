@@ -5,8 +5,8 @@ const ACCESS_TOKEN_KEY = 'access_token'
 
 const CLIENT_ID = 'LtQcR4ReApkJsMgLkuwX3Q7ciAzahUwk'
 const CLIENT_DOMAIN = 'decentsocial.eu.auth0.com'
-// const REDIRECT = `${window.location.protocol}//${window.location.host}/callback`
-const REDIRECT = 'http://localhost:3000/callback'
+const REDIRECT = `${window.location.protocol}//${window.location.host}/callback`
+// const REDIRECT = 'http://localhost:3000/callback'
 const SCOPE = ''
 const AUDIENCE = 'https://api.decent.social'
 
