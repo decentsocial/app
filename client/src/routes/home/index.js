@@ -20,7 +20,7 @@ const events = {
           Accept: 'application/json',
           'Content-Type': 'application/json'
         },
-        body: { twitterHandle }
+        body: JSON.stringify({ twitterHandle })
       })
         .then(res => res.json())
         .then(settings => {
