@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home'
+import Settings from '../routes/settings'
 // import Profile from '../routes/profile'
 
 export default class App extends Component {
@@ -37,6 +38,7 @@ export default class App extends Component {
         <Header user={this.state.user} />
         <Router>
           <Home path='/' user={this.state.user} />
+          <Settings path='/settings' user={this.state.user} />
         </Router>
       </div>
     )
