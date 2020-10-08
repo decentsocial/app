@@ -15,8 +15,12 @@ const events = {
     if (twitterHandle) {
       window.fetch(/decent/.test(window.location.host) ? '/user/settings' : 'http://localhost:3000/user/settings', {
         method: 'put',
-        headers: { Authorization: `Bearer ${getAccessToken()}` },
-        body: JSON.stringify({ twitterHandle })
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: { twitterHandle }
       })
         .then(res => res.json())
         .then(settings => {
