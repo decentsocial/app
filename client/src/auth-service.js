@@ -16,13 +16,16 @@ var auth = new auth0.WebAuth({
 })
 
 window.addEventListener('load', () => {
-  auth.parseHash({ hash: window.location.hash }, function (err, authResult) {
+  if (!window.location.hash) return
+  console.log('parseHash', window.location.hash)
+  auth.parseHash(function (err, authResult) {
     if (err) {
       return console.log(err)
     }
     console.log(authResult)
     setIdToken()
     setAccessToken()
+    window.location.replace('/')
   })
 })
 
@@ -79,12 +82,12 @@ export function setIdToken () {
 
 export function isLoggedIn () {
   const idToken = getIdToken()
-  return !!idToken && !isTokenExpired(idToken)
+  return !!idToken && idToken !== 'null' && !isTokenExpired(idToken)
 }
 
 function getTokenExpirationDate (encodedToken) {
   const token = decode(encodedToken)
-  if (!token.exp) { return null }
+  if (!token || !token.exp) { return null }
 
   const date = new Date(0)
   date.setUTCSeconds(token.exp)
