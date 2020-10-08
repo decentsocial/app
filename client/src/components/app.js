@@ -34,7 +34,7 @@ export default class App extends Component {
 
   render () {
     return (
-      <div id='app'>
+      <div id='app' class="mt-5">
         <Header user={this.state.user} />
         <Router>
           <Home path='/' user={this.state.user} />
