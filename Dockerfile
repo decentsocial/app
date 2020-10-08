@@ -7,7 +7,7 @@ COPY package.json package-lock.json ./
 
 RUN npm ci --prod
 
-COPY --from=0 /app .
+COPY . .
 RUN npm ci --prod
 RUN cd client && npm run build
 
@@ -17,5 +17,4 @@ FROM mhart/alpine-node:slim-12
 EXPOSE 3000
 
 WORKDIR /app
-COPY . .
 CMD ["node", "index.js"]
