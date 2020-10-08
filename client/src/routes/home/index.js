@@ -49,7 +49,7 @@ const Home = (props) => {
       {props.user && !props.user.setupComplete && (
         <form onSubmit={events.handleSubmitSetup}>
           <div class='row'>
-            <div class='col-md-6 form-group mb-5'>
+            <div class='col-lg-6 form-group mb-5'>
               <label for='twitterHandle' class='col-form-label'>
                 <b>Enter your Twitter handle</b><br />Retrieve the current users you follow
               </label>&nbsp;
@@ -58,7 +58,7 @@ const Home = (props) => {
                 <small id='twitterHandleHelp' class='form-text text-muted'>We'll never share your Twitter handle with anyone else.</small>
               </div>
             </div>
-            <div class='col-md-6 form-group mb-5'>
+            <div class='col-lg-6 form-group mb-5'>
               <p class='lead'>If you prefer, enter below the users you want to follow</p>
               <textarea class='form-control' id='followingList' rows='1'>
               @elonmusk
