@@ -7,12 +7,12 @@ COPY package.json package-lock.json ./
 
 RUN npm ci --prod
 
-COPY . .
-RUN cd client && npm i
-RUN cd client && npm run build
-
 # Then we copy over the modules from above onto a `slim` image
-# FROM mhart/alpine-node:slim-12
+FROM mhart/alpine-node:slim-12
+COPY .env .
+COPY index.js .
+COPY lib .
+COPY client/build ./client/build
 
 EXPOSE 3000
 
