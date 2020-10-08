@@ -18,13 +18,17 @@ export default class App extends Component {
   }
 
   componentDidMount () {
-    window.fetch('/user/info', {
+    window.fetch(/decent/.test(window.location.host) ? '/user/info' : 'http://localhost:3000/user/info', {
       headers: { Authorization: `Bearer ${getAccessToken()}` }
     })
       .then(res => res.json())
       .then(user => {
         console.log('user', user)
         this.setState({ user })
+      })
+      .catch(err => {
+        console.error(err.message)
+        this.setState({ user: null })
       })
   }
 
