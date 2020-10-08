@@ -6,6 +6,9 @@ services:
   mongo:
     image: mvertes/alpine-mongo
     restart: always
+  redis:
+    image: redis:6.0.8-alpine
+    restart: always
   web:
     build: .
     restart: always
@@ -15,3 +18,4 @@ services:
       - "3000:3000"
     depends_on:
       - mongo
+      - redis

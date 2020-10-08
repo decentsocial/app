@@ -33,6 +33,7 @@
     "express-openid-connect": "^2.0.0",
     "express-session": "^1.17.1",
     "helmet": "^4.1.1",
+    "ioredis": "^4.17.3",
     "jwks-rsa": "^1.10.1",
     "monk": "^7.3.2",
     "morgan": "^1.10.0",
