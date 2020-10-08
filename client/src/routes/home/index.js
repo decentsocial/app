@@ -44,8 +44,10 @@ const Home = (props) => {
   }
   return (
     <div class='container py-5'>
-      <h1 class='title mb-5'>Welcome to Decent</h1>
-      {props.user === null && <p><a href='#' onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>}
+      {(!props.user || props.user.setupComplete)
+        && <h1 class='title mb-5'>Welcome to Decent</h1>}
+      {props.user === null &&
+        <p><a href='#' onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>}
       {props.user && !props.user.setupComplete && (
         <form onSubmit={events.handleSubmitSetup}>
           <div class='row'>
