@@ -25,6 +25,7 @@ const events = {
         .then(res => res.json())
         .then(settings => {
           console.log('updated settings', settings)
+          window.location.reload()
         })
         .catch(err => {
           console.error(err)
