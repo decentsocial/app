@@ -37,6 +37,7 @@
     "jwks-rsa": "^1.10.1",
     "monk": "^7.3.2",
     "morgan": "^1.10.0",
+    "node-fetch": "^2.6.1",
     "nunjucks": "^3.2.1",
     "passport": "^0.4.1",
     "passport-auth0": "^1.3.3",

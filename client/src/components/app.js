@@ -5,6 +5,7 @@ import * as ApiService from '../api-service'
 import Header from './header'
 import style from './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'animate.css/animate.min.css'
 
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home'
