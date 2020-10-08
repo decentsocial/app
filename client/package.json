@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "preact build",
+    "build": "preact build --no-prerender",
     "serve": "sirv build --port 8080 --cors --single",
     "dev": "preact watch",
     "lint": "eslint src",
@@ -27,7 +27,10 @@
     "sirv-cli": "1.0.3"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.1.0",
+    "auth0-js": "^9.14.0",
     "bootstrap": "^4.5.2",
+    "jwt-decode": "^3.0.0",
     "preact": "^10.3.2",
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1"
