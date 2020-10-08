@@ -46,11 +46,6 @@ export function logout () {
   window.location.href = '/'
 }
 
-export function getUserInfo () {
-  return window.fetch('/user/info', { headers: { Authorization: `Bearer ${getAccessToken()}` } })
-    .then(res => res.json())
-}
-
 export function getIdToken () {
   return window.localStorage.getItem(ID_TOKEN_KEY)
 }

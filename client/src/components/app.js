@@ -1,12 +1,12 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router'
 
+import * as ApiService from '../api-service'
 import Header from './header'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home'
-import { getAccessToken } from '../auth-service'
 // import Profile from '../routes/profile'
 
 export default class App extends Component {
@@ -18,12 +18,7 @@ export default class App extends Component {
   }
 
   componentDidMount () {
-    const accessToken = getAccessToken()
-    if (!accessToken) return this.setState({ user: null })
-    window.fetch(/decent/.test(window.location.host) ? '/user/info' : 'http://localhost:3000/user/info', {
-      headers: { Authorization: `Bearer ${getAccessToken()}` }
-    })
-      .then(res => res.json())
+    ApiService.getUserInfo()
       .then(user => {
         console.log('user', user)
         this.setState({ user })

@@ -45,8 +45,8 @@ const Home = (props) => {
   }
   return (
     <div class='container py-5'>
-      {(!props.user || props.user.setupComplete) &&
-        <h1 class='title mb-5'>Welcome to Decent</h1>}
+      {/* {(!props.user || (props.user && props.user.setupComplete)) &&
+        <h1 class='title mb-5'>Welcome to Decent</h1>} */}
       {props.user === null &&
         <p><a href='#' onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>}
       {props.user && !props.user.setupComplete && (
@@ -77,10 +77,11 @@ const Home = (props) => {
         </form>
       )}
       {props.user && props.user.setupComplete && (
-        <div class=''>
-          You are set
+        <div class='py-5'>
+          <h1 class='title'>You are set</h1>
         </div>
       )}
+      {/localhost/.test(window.location.host) && <pre class=''>{JSON.stringify(props.user, null, 2)}</pre>}
     </div>
   )
 }
