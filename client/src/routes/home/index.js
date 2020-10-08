@@ -18,7 +18,7 @@ const Home = (props) => {
   return (
     <div class='container py-5'>
       <h1 class='title mb-5'>Welcome to Decent</h1>
-      {props.user === null && <p><span onClick={login} class='btn btn-sm' href='/'>Login</span> and enjoy a decent Twitter reading experience</p>}
+      {props.user === null && <p><span onClick={login} class='btn btn-primary btn-sm' href='/'>Login</span> and enjoy a decent Twitter reading experience</p>}
       {props.user && !props.user.setupComplete && (
         <form onSubmit={events.handleSubmitSetup}>
           <div class='form-group mb-5'>

@@ -12,7 +12,7 @@ const Header = (props) => (
         </a>
         <div class='navbar-nav'>
           {props.user && props.user.picture && <img src={props.user.picture} style='height: 2.5em; border-radius: 50%;' />}
-          <span onClick={isLoggedIn() ? logout : login} class='nav-link btn' href='/'>{isLoggedIn() ? 'Logout' : 'Login'}</span>
+          <span onClick={isLoggedIn() ? logout : login} class='nav-link btn btn-primary' href='/'>{isLoggedIn() ? 'Logout' : 'Login'}</span>
         </div>
       </div>
     </nav>
