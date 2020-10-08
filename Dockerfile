@@ -12,7 +12,7 @@ RUN cd client && npm i
 RUN cd client && npm run build
 
 # Then we copy over the modules from above onto a `slim` image
-FROM mhart/alpine-node:slim-12
+# FROM mhart/alpine-node:slim-12
 
 EXPOSE 3000
 
