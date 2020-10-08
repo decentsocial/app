@@ -9,8 +9,8 @@ const Header = (props) => (
       <div class='container'>
         <a class='navbar-brand' href='/'>Decent</a>
         <div class='navbar-nav'>
-          <Link onClick={isLoggedIn() ? logout : login} class='nav-link' href='/'>{isLoggedIn() ? 'Logout' : 'Login'}</Link>
           {props.user && props.user.picture && <img src={props.user.picture} style='height: 2.5em; border-radius: 50%;' />}
+          <Link onClick={isLoggedIn() ? logout : login} class='nav-link' href='/'>{isLoggedIn() ? 'Logout' : 'Login'}</Link>
         </div>
       </div>
     </nav>
