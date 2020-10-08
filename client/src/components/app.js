@@ -18,6 +18,8 @@ export default class App extends Component {
   }
 
   componentDidMount () {
+    const accessToken = getAccessToken()
+    if (!accessToken) return this.setState({ user: null })
     window.fetch(/decent/.test(window.location.host) ? '/user/info' : 'http://localhost:3000/user/info', {
       headers: { Authorization: `Bearer ${getAccessToken()}` }
     })

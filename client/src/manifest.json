@@ -1,6 +1,6 @@
 {
-  "name": "client",
-  "short_name": "client",
+  "name": "Decent - A privacy-friendly Twitter reader",
+  "short_name": "Decent",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
