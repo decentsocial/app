@@ -39,7 +39,7 @@ const Home = (props) => {
             </textarea>
             <small id='followingListHelp' class='form-text text-muted'>You can always change this later on, no worries.</small>
           </div>
-          <button class='btn btn-primary'>Complete setup</button>
+          <button class='btn btn-md btn-primary'>Complete setup</button>
         </form>
       )}
     </div>
