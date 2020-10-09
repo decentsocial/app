@@ -33,10 +33,10 @@ const Timeline = (props) => {
             width='100%'
             height='90vh'
             itemCount={timeline.length}
-            itemSize={300}
+            itemSize={240}
             renderItem={({ index, style, t = timeline[index] }) =>
-              <li tabindex={index} key={index} style={style} class={timelineStyles.tweet + ' list-group-item list-group-item-action1 p-0 border-0 py-5'}>
-                <div class='d-flex w-100 py-4 justify-content-between'>
+              <li tabindex={index + 5} key={index} style={style} class={timelineStyles.tweet + ' list-group-item list-group-item-action1 p-0 border-0 py-5'}>
+                <div class='d-flex w-100 justify-content-between'>
                   <h5 class='mb-1 text-muted'>
                     <div style={`display: inline-block; border-radius: 50%; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-image: url(${t.authorAvatar})`} />
                     &nbsp;&nbsp;&nbsp;&nbsp;{t.author}
