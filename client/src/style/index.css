@@ -40,11 +40,12 @@ body {
   padding: 0.1em 0.3em;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.75);
-  text-align: center;
   color: white;
-  transition: 0.1s ease-in-out;
+  transition: 0.2s ease-in-out;
   opacity: 0;
-  width: 220px;
+  height: 1.5em;
+  width: 200px;
+  text-align: center;
   max-width: 100vw;
   pointer-events: none;
   z-index: 5;
