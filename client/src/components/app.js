@@ -16,7 +16,8 @@ export default class App extends Component {
   constructor () {
     super()
     this.state = {
-      user: undefined
+      user: undefined,
+      timeline: []
     }
   }
 
@@ -30,6 +31,15 @@ export default class App extends Component {
         console.error(err.message)
         this.setState({ user: null })
       })
+    ApiService.getUserTimeline()
+      .then(newTimeline => {
+        console.log('newTimeline', newTimeline)
+        this.setState({ timeline: newTimeline })
+      })
+      .catch(err => {
+        console.error(err)
+        this.setState({ timeline: [] })
+      })
   }
 
   render () {
@@ -38,7 +48,7 @@ export default class App extends Component {
       <div id={style.app} class=''>
         <Header user={this.state.user} />
         <Router>
-          <Home path='/' user={this.state.user} />
+          <Home path='/' user={this.state.user} timeline={this.state.timeline} />
           <Settings path='/settings' user={this.state.user} />
         </Router>
         {this.state.user && <pre class='container mt-5'>{JSON.stringify(this.state.user, null, 2)}</pre>}

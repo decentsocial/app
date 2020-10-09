@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { login } from '../../auth-service'
 import Setup from '../../components/setup'
-
+import Timeline from '../../components/timeline'
 
 const Home = (props) => {
   console.log('window.location.hash', window.location.hash)
@@ -12,6 +12,7 @@ const Home = (props) => {
       </div>
     )
   }
+
   return (
     <div class='container py-5'>
       {/* {(!props.user || (props.user && props.user.setupComplete)) &&
@@ -21,7 +22,13 @@ const Home = (props) => {
       {props.user && !props.user.setupComplete && <Setup user={props.user} />}
       {props.user && props.user.setupComplete && (
         <div class='py-5'>
-          <h1 class='title'>{props.user.nickname},<br />you are all set</h1>
+          {(!Array.isArray(props.timeline) || props.timeline.length === 0) && (
+            <div>
+              <h1 class='title'>{props.user.nickname},<br />you are all set</h1>
+              <h1 class='title'>Loading your decent Timeline for the first time..</h1>
+            </div>
+          )}
+          <Timeline user={props.user} timeline={props.timeline} />
         </div>
       )}
     </div>

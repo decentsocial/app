@@ -21,6 +21,14 @@ export async function getUserInfo () {
   return json(base('/user/info'), options())
 }
 
+export async function getUserTimeline () {
+  if (!getAccessToken()) {
+    console.log('no access token')
+    throw new Error('no access token')
+  }
+  return json(base('/user/timeline'), options())
+}
+
 export async function getUserFollowing ({ twitterHandle } = {}) {
   if (!getAccessToken()) throw new Error('no access token')
   if (!twitterHandle) {
