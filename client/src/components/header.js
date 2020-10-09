@@ -13,7 +13,7 @@ const Header = (props) => {
           </a>
           <div class='navbar-nav animate__animated animate__flash'>
             {props.user && props.user.picture && <Link href='/settings'><img src={props.user.picture} class='px-3' style='height: 2.5em; border-radius: 50%;' /></Link>}
-            <a href='#' onClick={props.user ? logout : login} class='nav-link btn btn-sm'>{props.user ? 'Logout' : 'Login'}</a>
+            <a href='#' onClick={props.user ? logout : login} class='btn btn-sm'>{props.user ? 'Logout' : 'Login'}</a>
           </div>
         </div>
       </nav>
