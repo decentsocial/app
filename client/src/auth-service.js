@@ -7,7 +7,7 @@ const prod = !!/decent/.test(window.location.host)
 
 const CLIENT_ID = 'LtQcR4ReApkJsMgLkuwX3Q7ciAzahUwk'
 const CLIENT_DOMAIN = 'decentsocial.eu.auth0.com'
-const REDIRECT = prod ? '/callback' : 'http://localhost:3000/callback'
+const REDIRECT = prod ? 'https://app.decent.social/callback' : 'http://localhost:3000/callback'
 // const REDIRECT = 'http://localhost:3000/callback'
 const SCOPE = ''
 const AUDIENCE = 'https://api.decent.social'
