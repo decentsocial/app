@@ -33,7 +33,7 @@ const Home = (props) => {
                   <h1 class='title'>Loading your decent Timeline..</h1>
                 </div>
               )}
-              <Timeline style='margin-top: -7vh' user={props.user} timeline={props.timeline} />
+              <Timeline style='margin-top: -5vh' user={props.user} timeline={props.timeline} />
             </div>
           )}
         </div>

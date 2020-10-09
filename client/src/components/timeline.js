@@ -12,7 +12,7 @@ const Timeline = (props) => {
     .filter(t => replies ? true : !t.reply)
   console.log('rendering timeline', timeline.length)
   return (
-    <div class=''>
+    <div class={timelineStyles.timeline}>
       <div hidden class=' form-group'>
         <div class='form-check'>
           <input class='form-check-input' type='checkbox' value='' id='retweets' onInput={() => setRetweets(!retweets)} />
@@ -31,7 +31,7 @@ const Timeline = (props) => {
         <ul class='list-group border-0 p-0'>
           <VirtualList
             width='100%'
-            height='90vh'
+            height='100vh'
             itemCount={timeline.length}
             itemSize={240}
             renderItem={({ index, style, t = timeline[index] }) =>

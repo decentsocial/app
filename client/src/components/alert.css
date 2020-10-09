@@ -1,0 +1,9 @@
+.alert {
+  position: fixed;
+  bottom: 1em;
+  left: 50%;
+  margin-right: -25%;
+  width: 50%;
+  border: 2px solid black;
+  background-color: red;
+}

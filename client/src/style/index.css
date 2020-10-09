@@ -19,7 +19,7 @@
 } */
 
 body {
-	min-width: none !important;
+  min-width: none !important;
 }
 
 .has-tooltip:hover + .tooltip,

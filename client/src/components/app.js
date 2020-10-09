@@ -11,12 +11,15 @@ import Home from '../routes/home'
 import Settings from '../routes/settings'
 // import Profile from '../routes/profile'
 
+// import Alert from '../components/alert'
+
 export default class App extends Component {
   constructor () {
     super()
     this.state = {
       user: undefined,
-      timeline: []
+      timeline: [],
+      alert: undefined
     }
   }
 
@@ -30,6 +33,7 @@ export default class App extends Component {
         console.error(err.message)
         this.setState({ user: null })
       })
+
     let cachedTimeline = window.localStorage.getItem('timeline')
     console.log('cachedTimeline', !!cachedTimeline)
     let since
@@ -39,6 +43,9 @@ export default class App extends Component {
       console.log('since', since)
       this.setState({ timeline: cachedTimeline })
     }
+
+    this.setState({ alert: 'Loading timeline' })
+
     ApiService.getUserTimeline({ since })
       .then(newTimeline => {
         console.log('newTimeline', newTimeline)
@@ -47,6 +54,7 @@ export default class App extends Component {
         if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)
         this.setState({ timeline })
         window.localStorage.setItem('timeline', JSON.stringify(timeline))
+        setTimeout(() => { this.setState({ alert: undefined }) }, 3000)
       })
       .catch(err => {
         console.error(err)
@@ -63,6 +71,7 @@ export default class App extends Component {
           <Home path='/' user={this.state.user} timeline={this.state.timeline} />
           <Settings path='/settings' user={this.state.user} />
         </Router>
+        {/* <Alert alert={this.state.alert} /> */}
       </div>
     )
   }
