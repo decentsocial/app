@@ -1,5 +1,6 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
+import timelineStyles from './timeline.css'
 import VirtualList from 'react-tiny-virtual-list'
 
 const Timeline = (props) => {
@@ -34,13 +35,14 @@ const Timeline = (props) => {
             itemCount={timeline.length}
             itemSize={300}
             renderItem={({ index, style, t = timeline[index] }) =>
-              <li key={index} style={style} class='list-group-item list-group-item-action1 p-0 border-0 py-5'>
+              <li tabindex={index} key={index} style={style} class={timelineStyles.tweet + ' list-group-item list-group-item-action1 p-0 border-0 py-5'}>
                 <div class='d-flex w-100 py-4 justify-content-between'>
                   <h5 class='mb-1 text-muted'>
                     <div style={`display: inline-block; border-radius: 50%; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-image: url(${t.authorAvatar})`} />
                     &nbsp;&nbsp;&nbsp;&nbsp;{t.author}
                   </h5>
-                  <small class='text-muted'><a href={t.link} target='_blank' rel='noopener noreferrer'>{t.date}</a></small>
+                  <small class='text-muted has-tooltip'><a href={t.link} target='_blank' rel='noopener noreferrer'>{new Date(t.date).toISOString().substring(11, 16)}</a></small>
+                  <span class='tooltip blue'><p>{t.date}</p></span>
                 </div>
                 <p class='mb-1 text-left py-2'>{t.text}</p>
               </li>}

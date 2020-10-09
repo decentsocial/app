@@ -1,0 +1,6 @@
+.tweet {
+  opacity: 0.8;
+}
+.tweet:hover, .tweet:active, .tweet:focus {
+  opacity: 1;
+}
