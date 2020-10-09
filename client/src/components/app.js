@@ -3,7 +3,6 @@ import { Router } from 'preact-router'
 
 import * as ApiService from '../api-service'
 import Header from './header'
-import style from './style.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'animate.css/animate.min.css'
 
@@ -45,7 +44,7 @@ export default class App extends Component {
   render () {
     if (window.location.hash !== '') return null
     return (
-      <div id={style.app} class=''>
+      <div class=''>
         <Header user={this.state.user} />
         <Router>
           <Home path='/' user={this.state.user} timeline={this.state.timeline} />
