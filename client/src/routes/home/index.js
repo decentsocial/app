@@ -24,7 +24,7 @@ const Home = (props) => {
         <div class='py-5'>
           {(!Array.isArray(props.timeline) || props.timeline.length === 0) && (
             <div>
-              <h1 class='title'>{props.user.nickname},<br />you are all set</h1>
+              <h3 class='title'>{props.user.nickname}, you are all set</h3>
               <h1 class='title'>Loading your decent Timeline for the first time..</h1>
             </div>
           )}

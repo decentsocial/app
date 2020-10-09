@@ -34,7 +34,7 @@ export default class App extends Component {
     ApiService.getUserTimeline()
       .then(newTimeline => {
         console.log('newTimeline', newTimeline)
-        this.setState({ timeline: newTimeline.map(t => Object.assign(t, { isRetweet: t.text.startsWith('RT by'), isReply: t.text.startsWith('R to') })) })
+        this.setState({ timeline: newTimeline })
       })
       .catch(err => {
         console.error(err)
