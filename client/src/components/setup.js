@@ -12,7 +12,7 @@ const events = {
     console.log('twitterHandle', twitterHandle)
     console.log('followingList', followingList)
     if (twitterHandle) {
-      updateUserSettings({ twitterHandle })
+      return updateUserSettings({ twitterHandle })
         .then(settings => {
           console.log('updated settings', settings)
           window.location.reload()
