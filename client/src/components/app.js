@@ -30,10 +30,23 @@ export default class App extends Component {
         console.error(err.message)
         this.setState({ user: null })
       })
-    ApiService.getUserTimeline()
+    let cachedTimeline = window.localStorage.getItem('timeline')
+    console.log('cachedTimeline', !!cachedTimeline)
+    let since
+    if (cachedTimeline && cachedTimeline.length > 0) {
+      cachedTimeline = JSON.parse(cachedTimeline)
+      since = cachedTimeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(cachedTimeline[0].date))
+      console.log('since', since)
+      this.setState({ timeline: cachedTimeline })
+    }
+    ApiService.getUserTimeline({ since })
       .then(newTimeline => {
         console.log('newTimeline', newTimeline)
-        this.setState({ timeline: newTimeline })
+        const timeline = []
+        timeline.push(...newTimeline)
+        if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)
+        this.setState({ timeline })
+        window.localStorage.setItem('timeline', JSON.stringify(timeline))
       })
       .catch(err => {
         console.error(err)

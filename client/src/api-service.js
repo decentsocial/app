@@ -21,12 +21,13 @@ export async function getUserInfo () {
   return json(base('/user/info'), options())
 }
 
-export async function getUserTimeline () {
+export async function getUserTimeline ({ since }) {
   if (!getAccessToken()) {
     console.log('no access token')
     throw new Error('no access token')
   }
-  return json(base('/user/timeline'), options())
+  const query = since ? `?since=${since}` : ''
+  return json(base('/user/timeline' + query), options())
 }
 
 export async function getUserFollowing ({ twitterHandle } = {}) {
