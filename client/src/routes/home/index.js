@@ -14,21 +14,28 @@ const Home = (props) => {
   }
 
   return (
-    <div class='container py-5'>
+    <div class='container'>
       {/* {(!props.user || (props.user && props.user.setupComplete)) &&
         <h1 class='title mb-5'>Welcome to Decent</h1>} */}
-      {!props.user &&
-        <p><a href='#' onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>}
-      {props.user && !props.user.setupComplete && <Setup user={props.user} />}
-      {props.user && props.user.setupComplete && (
+      {props.user === null && (
         <div class='py-5'>
-          {(!Array.isArray(props.timeline) || props.timeline.length === 0) && (
-            <div>
-              <h3 class='title'>{props.user.nickname}, you are all set</h3>
-              <h1 class='title'>Loading your decent Timeline for the first time..</h1>
+          <p><a href='#' onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>
+        </div>
+      )}
+      {props.user && (
+        <div class=''>
+          {!props.user.setupComplete && <Setup user={props.user} />}
+          {props.user.setupComplete && (
+            <div class=''>
+              {(!Array.isArray(props.timeline) || props.timeline.length === 0) && (
+                <div>
+                  <h3 class='title'>{props.user.nickname}, you are all set</h3>
+                  <h1 class='title'>Loading your decent Timeline..</h1>
+                </div>
+              )}
+              <Timeline style='margin-top: -7vh' user={props.user} timeline={props.timeline} />
             </div>
           )}
-          <Timeline user={props.user} timeline={props.timeline} />
         </div>
       )}
     </div>
