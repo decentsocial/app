@@ -7,11 +7,11 @@ const Timeline = (props) => {
       <div class='col-lg-6 mx-auto my-5'>
         <ul class='list-group'>
           {(props.timeline || []).map(t =>
-            <a key={t.link} target='_blank' href={t.link} class='list-group-item list-group-item-action py-2'>
+            <a key={t.link} target='_blank' rel='noopener noreferrer' href={t.link} class='list-group-item list-group-item-action py-2'>
               <div class='d-flex w-100 py-4 justify-content-between'>
                 <h5 class='mb-1'>
                   <div style={`display: inline-block; border-radius: 50%; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-image: url(${t.authorAvatar})`} />
-                    &nbsp;&nbsp;&nbsp;&nbsp;{t.author}
+                  {t.author}
                 </h5>
                 <small class='text-muted'>{t.date}</small>
               </div>
