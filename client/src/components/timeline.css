@@ -1,6 +1,11 @@
 .tweet {
-  opacity: 0.8;
+  padding-left: 0.5em !important;
+  padding-right: 0.5em !important;
 }
 .tweet:hover, .tweet:active, .tweet:focus {
-  opacity: 1;
+  box-shadow: 10px 0px 0px #333;
+  padding-left: 1em !important;
+  padding-right: 0em !important;
+  outline: none;
+  transition: all .1s ease;
 }
