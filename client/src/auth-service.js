@@ -3,9 +3,11 @@ import auth0 from 'auth0-js'
 const ID_TOKEN_KEY = 'id_token'
 const ACCESS_TOKEN_KEY = 'access_token'
 
+const prod = !!/decent/.test(window.location.host)
+
 const CLIENT_ID = 'LtQcR4ReApkJsMgLkuwX3Q7ciAzahUwk'
 const CLIENT_DOMAIN = 'decentsocial.eu.auth0.com'
-const REDIRECT = `${window.location.protocol}//${window.location.host}/callback`
+const REDIRECT = prod ? '/callback' : 'http://localhost:3000/callback'
 // const REDIRECT = 'http://localhost:3000/callback'
 const SCOPE = ''
 const AUDIENCE = 'https://api.decent.social'

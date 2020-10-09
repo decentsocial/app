@@ -1,7 +1,7 @@
 import { getAccessToken } from './auth-service'
 
 const prod = !!/decent/.test(window.location.host)
-const base = url => (prod || !url.startsWith('http')) ? url : `http://localhost:3000${url}`
+const base = url => (prod || url.startsWith('http')) ? url : `http://localhost:3000${url}`
 const json = (path, opt) => window.fetch(base(path), opt).then(res => res.json())
 const options = ({ Authorization = `Bearer ${getAccessToken()}`, method = 'get', body } = {}) => ({
   method,
