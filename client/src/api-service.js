@@ -37,14 +37,14 @@ export async function getUserFollowing ({ twitterHandle } = {}) {
   }
   return json(base(`/api/following/${twitterHandle}`), options())
 }
-export async function updateUserSettings ({ twitterHandle } = {}) {
+export async function updateUserSettings ({ twitterHandle, following } = {}) {
   if (!getAccessToken()) throw new Error('no access token')
-  if (!twitterHandle) {
-    console.log('no twitterHandle')
-    throw new Error('no twitter handle')
+  if (!twitterHandle && !Array.isArray(following)) {
+    console.log('no twitterHandle and following')
+    throw new Error('no twitter handle and following')
   }
   return json(base('/user/settings'), options({
     method: 'put',
-    body: JSON.stringify({ twitterHandle })
+    body: JSON.stringify({ twitterHandle, following })
   }))
 }
