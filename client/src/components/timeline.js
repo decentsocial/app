@@ -31,7 +31,7 @@ const Timeline = (props) => {
         <ul class='list-group1 border-0 d-flex flex-column p-0'>
           <VirtualList
             width='100%'
-            height='100vh'
+            height='98vh'
             itemCount={timeline.length}
             itemSize={240}
             renderItem={({ index, style, t = timeline[index] }) =>
