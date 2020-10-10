@@ -28,14 +28,14 @@ const Timeline = (props) => {
         </div>
       </div>
       <div class='col-lg-6 col-md-12 p-0 mx-auto'>
-        <ul class='list-group border-0 p-0'>
+        <ul class='list-group1 border-0 d-flex flex-column p-0'>
           <VirtualList
             width='100%'
             height='100vh'
             itemCount={timeline.length}
             itemSize={240}
             renderItem={({ index, style, t = timeline[index] }) =>
-              <li tabindex={index + 5} key={index} style={style} class={timelineStyles.tweet + ' list-group-item list-group-item-action1 p-0 border-0 py-5'}>
+              <li tabindex={index + 5} key={index} style={style} class={timelineStyles.tweet + ' d-flex flex-column align-content-stretch list-group-item1 list-group-item-action1 p-0 border-0 py-5'}>
                 <div class='d-flex w-100 justify-content-between'>
                   <h5 class='mb-1 text-muted'>
                     <div style={`display: inline-block; border-radius: 50%; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-image: url(${t.authorAvatar})`} />
@@ -44,7 +44,7 @@ const Timeline = (props) => {
                   <small class='text-muted has-tooltip'><a href={t.link} target='_blank' rel='noopener noreferrer'>{new Date(t.date).toISOString().substring(11, 16)}</a></small>
                   <span class='tooltip blue'><p>{t.date}</p></span>
                 </div>
-                <p class='mb-1 text-left py-2'>{t.text}</p>
+                <p class='w-100 mb-1 text-left py-2'>{t.text}</p>
               </li>}
           />
         </ul>
