@@ -7,7 +7,7 @@ import styles from './header.css'
 class Header extends Component {
   render (props) {
     const [closed, setClosed] = useState(true)
-    console.log('header', { closed }, props.user, styles)
+    // console.log('header', { closed }, props.user, styles)
     return (
       <header>
         <nav class={'navbar navbar-white bg-white static-top fixed-top ' + `${styles.nav} ${closed ? styles.notVisible : styles.visible}`}>

@@ -4,13 +4,13 @@ import timelineStyles from './timeline.css'
 import VirtualList from 'react-tiny-virtual-list'
 
 const Timeline = (props) => {
-  console.log('timeline props.user', props.user)
+  // console.log('timeline props.user', props.user)
   const [retweets, setRetweets] = useState(false)
   const [replies, setReplies] = useState(false)
   const timeline = (props.timeline || [])
     .filter(t => retweets ? true : !t.retweet)
     .filter(t => replies ? true : !t.reply)
-  console.log('rendering timeline', timeline.length, timeline[0])
+  // console.log('rendering timeline', timeline.length, timeline[0])
   return (
     <div class={timelineStyles.timeline}>
       <div hidden class=' form-group'>
@@ -35,13 +35,18 @@ const Timeline = (props) => {
             itemCount={timeline.length}
             itemSize={(i => {
               const text = timeline[i].formatted
-              const newLinesCount = text.split('\n').length + 1
-              return 120 + newLinesCount * 15 + text.length * 0.7
+              const newLinesCount = text.split('\n').length
+              return 120 + newLinesCount * 20 + text.length * 0.5
             })}
             scrollToAlignment='center'
+            // onItemsRendered={({ startIndex, stopIndex }) => {
+            //   console.log('local', { stopIndex })
+
+            //   window.localStorage.setItem('lastIndex', stopIndex)
+            // }}
             overscanCount={10}
             renderItem={({ index, style, t = timeline[index] }) =>
-              <li autofocus={index === 0} id={`t${+new Date(t.date)}`} tabIndex={index + 1} key={index} style={style} class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
+              <li id={`t${+new Date(t.date)}`} tabIndex={index + 1} key={index} style={style} class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
                 <div class=''>
                   <small class='float-right text-muted has-tooltip'><a href={t.link} tabIndex={-1} target='_blank' rel='noopener noreferrer'>{new Date(t.date).toISOString().substring(11, 16)}</a></small>
                   <h5 class='mb-1 text-muted'>
