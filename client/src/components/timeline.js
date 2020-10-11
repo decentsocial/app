@@ -36,7 +36,7 @@ const Timeline = (props) => {
             itemSize={(i => {
               const text = timeline[i].formatted
               const newLinesCount = text.split('\n').length + 1
-              return 90 + newLinesCount * 30
+              return 100 + newLinesCount * 20 + text.length * 0.6
             })}
             overscanCount={10}
             renderItem={({ index, style, t = timeline[index] }) =>

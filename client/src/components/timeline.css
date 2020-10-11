@@ -4,7 +4,8 @@
   max-width: 42em;
 }
 .tweet p {
-  white-space: pre;
+  /* white-space: pre; */
+  white-space: pre-line;
 }
 /*
 .tweet:hover, .tweet:active, .tweet:focus {
