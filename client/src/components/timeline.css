@@ -2,10 +2,12 @@
   /* padding-left: 0.5em !important;
   padding-right: 0.5em !important; */
   max-width: 42em;
+  overflow: hidden;
 }
 .tweet p {
   /* white-space: pre; */
   white-space: pre-line;
+  white-space: pre-wrap;
 }
 /*
 .tweet:hover, .tweet:active, .tweet:focus {
