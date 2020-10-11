@@ -34,7 +34,8 @@ const Timeline = (props) => {
             height='100vh'
             itemCount={timeline.length}
             itemSize={(i => {
-              const text = timeline[i].formatted
+              const item = timeline[i]
+              const text = item.formatted || item.text || '\n'
               const newLinesCount = text.split('\n').length
               return 120 + newLinesCount * 20 + text.length * 0.5
             })}
@@ -55,7 +56,7 @@ const Timeline = (props) => {
                   </h5>
                   <span class='tooltip blue'><p>{t.date}</p></span>
                 </div>
-                <p class='w-100 mb-1 text-left py-2'>{t.formatted}</p>
+                <p class='w-100 mb-1 text-left py-2'>{t.formatted || t.text}</p>
               </li>}
           />
         </ul>

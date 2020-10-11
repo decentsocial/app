@@ -19,7 +19,7 @@ const Home = (props) => {
         <h1 class='title mb-5'>Welcome to Decent</h1>} */}
       {props.user === null && (
         <div class='py-5 mt-5'>
-          <p><a href='#' onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>
+          <p><a href='#' tabIndex={1} onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>
         </div>
       )}
       {props.user && (
