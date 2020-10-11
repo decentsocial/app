@@ -11,7 +11,7 @@ import Home from '../routes/home'
 import Settings from '../routes/settings'
 // import Profile from '../routes/profile'
 
-// import Alert from '../components/alert'
+import Alert from '../components/alert'
 
 export default class App extends Component {
   constructor () {
@@ -44,16 +44,16 @@ export default class App extends Component {
       this.setState({ timeline: cachedTimeline })
     }
 
-    this.setState({ alert: 'Loading timeline' })
+    this.setState({ alert: 'Loading updates..' })
 
     ApiService.getUserTimeline({ since })
       .then(newTimeline => {
         const timeline = newTimeline
         if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)
-        this.setState({ timeline })
+        this.setState({ timeline, alert: "You're up to date." })
         window.localStorage.setItem('timeline', JSON.stringify(timeline))
         cachedTimeline = timeline
-        setTimeout(() => { this.setState({ alert: undefined }) }, 3000)
+        setTimeout(() => { this.setState({ alert: undefined }) }, 1500)
       })
       .catch(err => {
         console.error(err)
@@ -70,7 +70,7 @@ export default class App extends Component {
           <Home path='/' user={this.state.user} timeline={this.state.timeline} lastIndex={this.state.lastIndex} />
           <Settings path='/settings' user={this.state.user} />
         </Router>
-        {/* <Alert alert={this.state.alert} /> */}
+        <Alert alert={this.state.alert} />
       </div>
     )
   }
