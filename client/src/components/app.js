@@ -30,12 +30,11 @@ export default class App extends Component {
         this.setState({ user })
       })
       .catch(err => {
-        console.error(err.message)
+        window.debug && console.error(err.message)
         this.setState({ user: null })
       })
 
     const lastIndex = +window.localStorage.getItem('lastIndex')
-    console.log('local',{lastIndex})
     if (Number.isFinite(lastIndex)) this.setState({ lastIndex })
     let cachedTimeline = window.localStorage.getItem('timeline')
     let since
@@ -49,11 +48,11 @@ export default class App extends Component {
 
     ApiService.getUserTimeline({ since })
       .then(newTimeline => {
-        const timeline = []
-        timeline.push(...newTimeline)
+        const timeline = newTimeline
         if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)
         this.setState({ timeline })
         window.localStorage.setItem('timeline', JSON.stringify(timeline))
+        cachedTimeline = timeline
         setTimeout(() => { this.setState({ alert: undefined }) }, 3000)
       })
       .catch(err => {
