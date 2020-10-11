@@ -29,6 +29,7 @@ const events = {
 
 const Setup = (props) => {
   console.log('header props.user', props.user)
+  const followingText = (props.user && props.user.settings && props.user.settings.following) ? props.user.settings.following.map(t => `@${t}`).join(' ') : ''
   return (
     <form onSubmit={events.handleSubmitSetup}>
       <div class='row'>
@@ -43,8 +44,8 @@ const Setup = (props) => {
         </div>
         <div class='col-lg-6 form-group mb-5'>
           <p class='lead mt-3'>If you prefer, enter below the users you want to follow</p>
-          <textarea class='form-control' id='following' rows='1'>
-            {(props.user && props.user.settings && props.user.settings.following && props.user.settings.following.map(t => `@${t}`).join(' ')) || ''}
+          <textarea class='form-control' id='following' rows='3'>
+            {followingText}
           </textarea>
           <small id='followingListHelp' class='form-text text-muted'>You can always change this later on, no worries.</small>
         </div>
