@@ -1,0 +1,18 @@
+.nav {
+  transition: all .1s ease-in-out;
+}
+.notVisible {
+  opacity: 0;
+  height: 0;
+}
+.visible {
+  opacity: 1;
+  height: auto;
+}
+.toggle {
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  border: 1px solid #333;
+  border-radius: 50%;
+}
