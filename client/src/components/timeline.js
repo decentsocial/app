@@ -38,7 +38,7 @@ const Timeline = (props) => {
               const newLinesCount = text.split('\n').length + 1
               return 90 + newLinesCount * 30
             })}
-            overscanCount={4}
+            overscanCount={10}
             renderItem={({ index, style, t = timeline[index] }) =>
               <li id={`t${+new Date(t.date)}`} tabIndex={index + 1} key={index} style={style} class={timelineStyles.tweet + ' d-flex flex-column align-content-stretch p-0 border-0 py-5'}>
                 <div class='d-flex w-100 justify-content-between'>
