@@ -5,7 +5,7 @@ import Timeline from '../../components/timeline'
 
 const Home = (props) => {
   console.log('window.location.hash', window.location.hash)
-  if (window.location.hash) {
+  if (window.location.hash && window.location.hash !== '') {
     return (
       <div class='container'>
         <h1 class='title'>Logging you in...</h1>
@@ -15,8 +15,6 @@ const Home = (props) => {
 
   return (
     <div class='container'>
-      {/* {(!props.user || (props.user && props.user.setupComplete)) &&
-        <h1 class='title mb-5'>Welcome to Decent</h1>} */}
       {props.user === null && (
         <div class='py-5 mt-5'>
           <p><a href='#' tabIndex={1} onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>

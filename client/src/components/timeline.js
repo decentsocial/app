@@ -4,13 +4,11 @@ import timelineStyles from './timeline.css'
 import VirtualList from 'react-tiny-virtual-list'
 
 const Timeline = (props) => {
-  // console.log('timeline props.user', props.user)
   const [retweets, setRetweets] = useState(false)
   const [replies, setReplies] = useState(false)
   const timeline = (props.timeline || [])
     .filter(t => retweets ? true : !t.retweet)
     .filter(t => replies ? true : !t.reply)
-  // console.log('rendering timeline', timeline.length, timeline[0])
   return (
     <div class={timelineStyles.timeline}>
       <div hidden class=' form-group'>
