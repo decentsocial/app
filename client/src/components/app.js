@@ -27,7 +27,6 @@ export default class App extends Component {
   componentDidMount () {
     ApiService.getUserInfo()
       .then(user => {
-        // console.log('user', user)
         this.setState({ user })
       })
       .catch(err => {
@@ -39,12 +38,10 @@ export default class App extends Component {
     console.log('local',{lastIndex})
     if (Number.isFinite(lastIndex)) this.setState({ lastIndex })
     let cachedTimeline = window.localStorage.getItem('timeline')
-    // console.log('cachedTimeline', !!cachedTimeline)
     let since
     if (cachedTimeline && cachedTimeline.length > 0) {
       cachedTimeline = JSON.parse(cachedTimeline)
       since = cachedTimeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(cachedTimeline[0].date))
-      // console.log('since', since)
       this.setState({ timeline: cachedTimeline })
     }
 
@@ -52,7 +49,6 @@ export default class App extends Component {
 
     ApiService.getUserTimeline({ since })
       .then(newTimeline => {
-        // console.log('newTimeline', newTimeline)
         const timeline = []
         timeline.push(...newTimeline)
         if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)

@@ -19,7 +19,7 @@ var auth = new auth0.WebAuth({
 
 window.addEventListener('load', () => {
   if (!window.location.hash) return
-  console.log('parseHash', window.location.hash)
+  // console.log('parseHash', window.location.hash)
   auth.parseHash(function (err, authResult) {
     if (err) {
       return console.log(err)
