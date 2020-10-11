@@ -28,7 +28,7 @@ const Timeline = (props) => {
         </div>
       </div>
       <div class='col-lg-6 col-md-12 p-0 mx-auto'>
-        <ul class='list-group1 border-0 d-flex flex-column p-0'>
+        <ul class='list-group1 border-0 d-flex flex-column p-0' style='padding-top: 3em !important;'>
           <VirtualList
             width='100%'
             height='98vh'
