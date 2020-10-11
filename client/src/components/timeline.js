@@ -38,9 +38,10 @@ const Timeline = (props) => {
               const newLinesCount = text.split('\n').length + 1
               return 120 + newLinesCount * 15 + text.length * 0.7
             })}
+            scrollToAlignment='center'
             overscanCount={10}
             renderItem={({ index, style, t = timeline[index] }) =>
-              <li id={`t${+new Date(t.date)}`} tabIndex={index + 1} key={index} style={style} class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
+              <li autofocus={index === 0} id={`t${+new Date(t.date)}`} tabIndex={index + 1} key={index} style={style} class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
                 <div class=''>
                   <small class='float-right text-muted has-tooltip'><a href={t.link} tabIndex={-1} target='_blank' rel='noopener noreferrer'>{new Date(t.date).toISOString().substring(11, 16)}</a></small>
                   <h5 class='mb-1 text-muted'>
