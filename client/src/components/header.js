@@ -21,10 +21,15 @@ class Header extends Component {
             </div>
           </div>
         </nav>
-        <button style='z-index: 9999;' class={styles.toggle + ' btn btn-sm'} onClick={() => setClosed(closed => !closed)}>
-          <svg width='1.5em' height='1.5em' viewBox='0 0 16 16' class='bi bi-layers' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
+        <button tabIndex={0} style='z-index: 9999;' class={styles.toggle + ' btn btn-sm'} onClick={() => setClosed(closed => !closed)}>
+          {/* <svg width='1.5em' height='1.5em' viewBox='0 0 16 16' class='bi bi-layers' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
             <path fill-rule='evenodd' d='M3.188 8L.264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l-1.063.567L14.438 10 8 13.433 1.562 10 4.25 8.567 3.187 8z' />
             <path fill-rule='evenodd' d='M7.765 1.559a.5.5 0 0 1 .47 0l7.5 4a.5.5 0 0 1 0 .882l-7.5 4a.5.5 0 0 1-.47 0l-7.5-4a.5.5 0 0 1 0-.882l7.5-4zM1.563 6L8 9.433 14.438 6 8 2.567 1.562 6z' />
+          </svg> */}
+          <svg viewBox='0 0 60 60' width='20' height='20'>
+            <rect width='100' height='5' />
+            <rect y='20' width='100' height='5' />
+            <rect y='40' width='100' height='5' />
           </svg>
         </button>
       </header>

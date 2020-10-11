@@ -3,6 +3,9 @@
   padding-right: 0.5em !important; */
   max-width: 42em;
 }
+.tweet p {
+  white-space: pre;
+}
 /*
 .tweet:hover, .tweet:active, .tweet:focus {
   box-shadow: 10px 0px 0px #333;

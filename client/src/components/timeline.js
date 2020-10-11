@@ -10,7 +10,7 @@ const Timeline = (props) => {
   const timeline = (props.timeline || [])
     .filter(t => retweets ? true : !t.retweet)
     .filter(t => replies ? true : !t.reply)
-  console.log('rendering timeline', timeline.length)
+  console.log('rendering timeline', timeline.length, timeline[0])
   return (
     <div class={timelineStyles.timeline}>
       <div hidden class=' form-group'>
@@ -33,18 +33,23 @@ const Timeline = (props) => {
             width='100%'
             height='100vh'
             itemCount={timeline.length}
-            itemSize={240}
+            itemSize={(i => {
+              const text = timeline[i].formatted
+              const newLinesCount = text.split('\n').length + 1
+              return 90 + newLinesCount * 30
+            })}
+            overscanCount={4}
             renderItem={({ index, style, t = timeline[index] }) =>
-              <li tabindex={index + 5} key={index} style={style} class={timelineStyles.tweet + ' d-flex flex-column align-content-stretch p-0 border-0 py-5'}>
+              <li id={`t${+new Date(t.date)}`} tabIndex={index + 1} key={index} style={style} class={timelineStyles.tweet + ' d-flex flex-column align-content-stretch p-0 border-0 py-5'}>
                 <div class='d-flex w-100 justify-content-between'>
                   <h5 class='mb-1 text-muted'>
                     <div style={`display: inline-block; border-radius: 50%; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-image: url(${t.authorAvatar})`} />
                     &nbsp;&nbsp;&nbsp;&nbsp;{t.author}
                   </h5>
-                  <small class='text-muted has-tooltip'><a href={t.link} target='_blank' rel='noopener noreferrer'>{new Date(t.date).toISOString().substring(11, 16)}</a></small>
+                  <small class='text-muted has-tooltip'><a href={t.link} tabIndex={-1} target='_blank' rel='noopener noreferrer'>{new Date(t.date).toISOString().substring(11, 16)}</a></small>
                   <span class='tooltip blue'><p>{t.date}</p></span>
                 </div>
-                <p class='w-100 mb-1 text-left py-2'>{t.text}</p>
+                <p class='w-100 mb-1 text-left py-2'>{t.formatted}</p>
               </li>}
           />
         </ul>
