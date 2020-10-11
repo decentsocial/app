@@ -1,22 +1,11 @@
 .tweet {
-  /* padding-left: 0.5em !important;
-  padding-right: 0.5em !important; */
   max-width: 42em;
   overflow: hidden;
 }
 .tweet p {
-  /* white-space: pre; */
   white-space: pre-line;
   white-space: pre-wrap;
 }
-/*
-.tweet:hover, .tweet:active, .tweet:focus {
-  box-shadow: 10px 0px 0px #333;
-  padding-left: 1em !important;
-  padding-right: 0em !important;
-  outline: none;
-  transition: all .1s ease;
-} */
 
 .timeline {
   /* background: red !important; */
