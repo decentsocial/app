@@ -1,6 +1,11 @@
 .nav {
   transition: all .1s ease-in-out;
 }
+@media all and (max-width: 50em) {
+  .nav {
+    padding-right: 3.3em !important;
+  }
+}
 .notVisible {
   opacity: 0;
   height: 0;
