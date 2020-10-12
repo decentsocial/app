@@ -63,11 +63,11 @@ export default class App extends Component {
       })
   }
   keyMap = { 
-    SEARCH: 'shift+/'
+    SEARCH: 'alt+s'
   }
   handlers = {
     SEARCH: () => {
-      console.log('shift+/ pressed', this)
+      console.log('SEARCH pressed', this)
       this.setState({ search: true })
     }
   }
