@@ -103,7 +103,7 @@ export default class App extends Component {
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <button class="btn btn-md" onClick={() => this.setState({search: false})}>Close</button>
+                  <button class="btn btn-md" onClick={() => this.setState({search: false, filteredTimeline: undefined})}>Close</button>
                 </div>
               </div>
             </div>
