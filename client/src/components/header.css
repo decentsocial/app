@@ -9,10 +9,12 @@
 .notVisible {
   opacity: 0;
   height: 0;
+  top: -7em !important;
 }
 .visible {
   opacity: 1;
   height: auto;
+  top: 0;
 }
 .toggle {
   position: fixed;
