@@ -59,7 +59,7 @@ export default class App extends Component {
   }
   keyMap = { 
     EXIT: 'esc',
-    SEARCH: 'alt+s',
+    SEARCH: 'shift+/',
   }
   handlers = {
     EXIT: () => {
