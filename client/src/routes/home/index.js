@@ -28,7 +28,7 @@ const Home = (props) => {
                 //   <h1 class='title'>Loading your decent Timeline..</h1>
                 // </div>
                 <div class='row user-select-none'>
-                  <div class={timelineStyles.tweet + ' col-md-9 mx-auto p-0 border-0 py-5'}>
+                  <div class={timelineStyles.tweet + ' col-lg-9 col-md-12 mx-auto p-0 border-0 py-5'}>
                     <div class=''>
                       <small class='float-right text-muted has-tooltip'>__:__AM</small>
                       <h5 class='mb-1 text-muted text-left'>
@@ -38,7 +38,7 @@ const Home = (props) => {
                     </div>
                     <p class='w-100 mb-1 text-left py-2'>_________________________________________________<br />__________________________________________________________<br />________________<br />_____</p>
                   </div>
-                  <div class={timelineStyles.tweet + ' col-md-9 mx-auto p-0 border-0 py-5'}>
+                  <div class={timelineStyles.tweet + ' col-lg-9 col-md-12 mx-auto p-0 border-0 py-5'}>
                     <div class=''>
                       <small class='float-right text-muted has-tooltip'>__:__AM</small>
                       <h5 class='mb-1 text-muted text-left'>
@@ -48,7 +48,7 @@ const Home = (props) => {
                     </div>
                     <p class='w-100 mb-1 text-left py-2'>__________________________________<br />______________<br /></p>
                   </div>
-                  <div class={timelineStyles.tweet + ' col-md-9 mx-auto p-0 border-0 py-5'}>
+                  <div class={timelineStyles.tweet + ' col-lg-9 col-md-12 mx-auto p-0 border-0 py-5'}>
                     <div class=''>
                       <small class='float-right text-muted has-tooltip'>__:__PM</small>
                       <h5 class='mb-1 text-muted text-left'>
@@ -58,7 +58,7 @@ const Home = (props) => {
                     </div>
                     <p class='w-100 mb-1 text-left py-2'>_________________________________________<br />_____________________________________<br />____________________________<br />_____</p>
                   </div>
-                  <div class={timelineStyles.tweet + ' col-md-9 mx-auto p-0 border-0 py-5'}>
+                  <div class={timelineStyles.tweet + ' col-lg-9 col-md-12 mx-auto p-0 border-0 py-5'}>
                     <div class=''>
                       <small class='float-right text-muted has-tooltip'>__:__PM</small>
                       <h5 class='mb-1 text-muted text-left'>
@@ -68,7 +68,7 @@ const Home = (props) => {
                     </div>
                     <p class='w-100 mb-1 text-left py-2'>_____________________________<br />______________________________________________________<br />________________<br />_________________________________________</p>
                   </div>
-                  <div class={timelineStyles.tweet + ' col-md-9 mx-auto p-0 border-0 py-5'}>
+                  <div class={timelineStyles.tweet + ' col-lg-9 col-md-12 mx-auto p-0 border-0 py-5'}>
                     <div class=''>
                       <small class='float-right text-muted has-tooltip'>__:__PM</small>
                       <h5 class='mb-1 text-muted text-left'>
