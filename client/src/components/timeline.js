@@ -35,7 +35,7 @@ const Timeline = (props) => {
               const item = timeline[i]
               const text = item.formatted || item.text || '\n'
               const newLinesCount = text.split('\n').length
-              return 120 + newLinesCount * 20 + text.length * 0.5
+              return 150 + newLinesCount * 15 + text.length * 0.3
             })}
             scrollToAlignment='center'
             // onItemsRendered={({ startIndex, stopIndex }) => {
