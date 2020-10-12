@@ -28,7 +28,7 @@ const Home = (props) => {
             <br />
             Navigate the timeline using <code>TAB</code>, your mouse, or finger since Decent runs on the Web!
           </p>
-          <video class='img-fluid mt-5' src='https://decent.social/video/app.decent.social-browsing-timeline.mov' autoPlay controls />
+          <video class='img-fluid mt-5' src='https://decent.social/video/app.decent.social-browsing-timeline.mov' autoPlay controls loop />
 
           <h1 class='title mt-5 mb-3'>Powerful search</h1>
           <p class='lead'>
@@ -43,7 +43,7 @@ const Home = (props) => {
             <br />
             Just looking for a topic, e.g. "open source"? You already know what to do.
           </p>
-          <video class='img-fluid mt-5' src='https://decent.social/video/app.decent.social-search.mov' autoPlay controls />
+          <video class='img-fluid mt-5' src='https://decent.social/video/app.decent.social-search.mov' autoPlay controls loop />
 
           <h1 class='title mt-5 mb-3'>Simple settings</h1>
           <p class='lead'>
@@ -55,7 +55,7 @@ const Home = (props) => {
             <br />
             So let me know what you think by <a href='https://decent.social/#cta'>subscribing to the newsletter</a> and get in touch with me!
           </p>
-          <video class='img-fluid mt-5' src='https://decent.social/video/app.decent.social-settings.mov' autoPlay controls />
+          <video class='img-fluid mt-5' src='https://decent.social/video/app.decent.social-settings.mov' autoPlay controls loop />
 
           <h1 class='title mt-5 mb-3'>What are you waiting for?</h1>
           <p class='lead'>
