@@ -91,7 +91,7 @@ export default class App extends Component {
           <Settings path='/settings' user={this.state.user} />
         </Router>
         <Alert alert={this.state.alert} />
-        <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />;
+        <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />
         {this.state.search && 
           <div style='position: fixed; top: 0; left: 0; right: 0; background: lightgrey; padding: 3em 2em;'>
             <div class="container">
