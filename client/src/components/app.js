@@ -20,7 +20,6 @@ export default class App extends Component {
     this.state = {
       user: undefined,
       timeline: [],
-      lastIndex: undefined,
       alert: undefined,
       search: undefined
     }
@@ -34,8 +33,6 @@ export default class App extends Component {
         this.setState({ user: null })
       })
 
-    const lastIndex = +window.localStorage.getItem('lastIndex')
-    if (Number.isFinite(lastIndex)) this.setState({ lastIndex })
     let cachedTimeline = window.localStorage.getItem('timeline')
     let since
     if (cachedTimeline && cachedTimeline.length > 0) {
@@ -90,7 +87,7 @@ export default class App extends Component {
       <div class=''>
         <Header user={this.state.user} />
         <Router>
-          <Home path='/' user={this.state.user} timeline={this.state.filteredTimeline || this.state.timeline} lastIndex={this.state.lastIndex} />
+          <Home path='/' user={this.state.user} timeline={this.state.filteredTimeline || this.state.timeline} />
           <Settings path='/settings' user={this.state.user} />
         </Router>
         <Alert alert={this.state.alert} />

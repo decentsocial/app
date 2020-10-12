@@ -5,28 +5,12 @@ import VirtualList from 'react-tiny-virtual-list'
 import Linkify from 'react-linkify'
 
 const Timeline = (props) => {
-  const [retweets, setRetweets] = useState(false)
-  const [replies, setReplies] = useState(false)
   const timeline = (props.timeline || [])
-    .filter(t => retweets ? true : !t.retweet)
-    .filter(t => replies ? true : !t.reply)
+    .filter(t => props.retweets ? true : !t.retweet)
+    .filter(t => props.replies ? true : !t.reply)
 
   return (
     <div class={timelineStyles.timeline}>
-      <div hidden class=' form-group'>
-        <div class='form-check'>
-          <input class='form-check-input' type='checkbox' value='' id='retweets' onInput={() => setRetweets(!retweets)} />
-          <label class='form-check-label' for='retweets'>
-          Show Retweets
-          </label>
-        </div>
-        <div class='form-check'>
-          <input class='form-check-input' type='checkbox' value='' id='replies' onInput={() => setReplies(!replies)} />
-          <label class='form-check-label' for='replies'>
-          Show Replies
-          </label>
-        </div>
-      </div>
       <div class='col-lg-6 col-md-12 p-0 mx-auto overflow-hidden'>
         <VirtualList
           width='100%'

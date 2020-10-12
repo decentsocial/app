@@ -100,7 +100,7 @@ const Home = (props) => {
                   <h1 class='title'>Loading your decent Timeline..</h1>
                 </div>
               )}
-              <Timeline style='margin-top: -5vh1' user={props.user} timeline={props.timeline} />
+              <Timeline style='margin-top: -5vh1' user={props.user} timeline={props.timeline} retweets={false} replies={false} />
             </div>
           )}
         </div>
