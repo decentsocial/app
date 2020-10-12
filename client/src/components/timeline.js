@@ -36,7 +36,6 @@ const Timeline = (props) => {
               </div>
               <p class='w-100 mb-1 text-left py-2'>
                 <Linkify>{t.formatted || t.text}</Linkify>
-                <pre>{t.text}</pre>
               </p>
             </div>}
         />
