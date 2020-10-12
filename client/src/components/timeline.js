@@ -11,7 +11,6 @@ const Timeline = (props) => {
     .filter(t => retweets ? true : !t.retweet)
     .filter(t => replies ? true : !t.reply)
 
-  console.log({ timelineStyles })
   return (
     <div class={timelineStyles.timeline}>
       <div hidden class=' form-group'>
