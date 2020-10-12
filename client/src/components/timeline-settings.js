@@ -19,8 +19,10 @@ function eyeOpenIcon () {
 const TimelineSettings = (props) => {
   const cachedRetweets = window.localStorage.getItem('retweets') === 'true'
   const cachedReplies = window.localStorage.getItem('replies') === 'true'
+  const cachedAvatars = window.localStorage.getItem('avatars') === 'true'
   const [retweets, setRetweets] = useState(cachedRetweets)
   const [replies, setReplies] = useState(cachedReplies)
+  const [avatars, setAvatars] = useState(cachedAvatars)
 
   return (
     <div class='row mt-5'>
@@ -42,6 +44,13 @@ const TimelineSettings = (props) => {
             <label class='form-check-label' for='replies'>
               {replies ? 'Show Replies' : 'Hide Replies'}
               &nbsp;&nbsp;{replies ? eyeOpenIcon() : eyeClosedIcon()}
+            </label>
+          </div>
+          <div class='form-check'>
+            <input class='form-check-input' type='checkbox' checked={avatars} id='avatars' onInput={() => { window.localStorage.setItem('avatars', `${!avatars}`); setAvatars(!avatars) }} />
+            <label class='form-check-label' for='avatars'>
+              {avatars ? 'Show Avatars' : 'Hide Avatars'}
+              &nbsp;&nbsp;{avatars ? eyeOpenIcon() : eyeClosedIcon()}
             </label>
           </div>
         </div>

@@ -34,7 +34,10 @@ const Timeline = (props) => {
                 </h5>
                 <span class='tooltip blue'><p>{t.date}</p></span>
               </div>
-              <p class='w-100 mb-1 text-left py-2'><Linkify>{t.formatted || t.text}</Linkify></p>
+              <p class='w-100 mb-1 text-left py-2'>
+                <Linkify>{t.formatted || t.text}</Linkify>
+                <pre>{t.text}</pre>
+              </p>
             </div>}
         />
       </div>
