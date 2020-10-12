@@ -57,12 +57,12 @@ export default class App extends Component {
       })
       .catch(err => {
         console.error(err)
-        this.setState({ timeline: [] })
+        this.setState({ timeline: [], alert: undefined })
       })
   }
 
   render () {
-    if (window.location.hash !== '') return null
+    if (window.location.hash) return null
     return (
       <div class=''>
         <Header user={this.state.user} />
