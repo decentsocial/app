@@ -28,9 +28,7 @@ export default class App extends Component {
 
   componentDidMount () {
     ApiService.getUserInfo()
-      .then(user => {
-        this.setState({ user })
-      })
+      .then(user => this.setState({ user }))
       .catch(err => {
         window.debug && console.error(err.message)
         this.setState({ user: null })
@@ -63,9 +61,14 @@ export default class App extends Component {
       })
   }
   keyMap = { 
-    SEARCH: 'alt+s'
+    EXIT: 'esc',
+    SEARCH: 'alt+s',
   }
   handlers = {
+    EXIT: () => {
+      console.log('EXIT pressed', this)
+      this.setState({ search: undefined, filteredTimeline: undefined })
+    },
     SEARCH: () => {
       console.log('SEARCH pressed', this)
       this.setState({ search: true })
