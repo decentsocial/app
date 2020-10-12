@@ -1,5 +1,4 @@
 import { h } from 'preact'
-import { useState } from 'preact/hooks'
 import timelineStyles from './timeline.css'
 import VirtualList from 'react-tiny-virtual-list'
 import Linkify from 'react-linkify'
