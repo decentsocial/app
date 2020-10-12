@@ -1,11 +1,22 @@
 .alert {
   position: fixed;
-  bottom: 1em;
-  right: 1em;
-  max-width: 20em;
-  width: 100%;
+  top: 1em;
+  left: 50%;
+  left: calc(50% - 1em);
+  width: 2em;
+  height: 2em;
+  /* max-width: 20em; */
+  /* width: 100%; */
+  border-radius: 50%;
+  opacity: 0.5;
   background-color: white;
   color: #333;
-  box-shadow: 0px 5px 10px #333;
-  padding: 1em 1.5em;
+  animation: rotate 1s linear infinite;
+  /* padding: 1em 1.5em; */
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateZ(360deg)
+  }
 }
