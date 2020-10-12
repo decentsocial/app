@@ -1,6 +1,12 @@
 .tweet {
   max-width: 42em;
   overflow: hidden;
+  transition: box-shadow .1 s ease;
+  border: none !important;
+  outline: none !important;
+}
+.tweet:focus {
+  box-shadow: 5px 0px 20px lightgrey;
 }
 .tweet p {
   white-space: pre-line;
@@ -9,7 +15,6 @@
 
 .timeline {
   max-height: 100%;
-  /* background: red !important; */
-  /* margin-top: 3em; */
-  /* padding-top: 3em; */
+  padding-left: 1em;
+  padding-right: 1em;
 }
