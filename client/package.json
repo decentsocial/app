@@ -36,6 +36,7 @@
     "preact-render-to-string": "^5.1.4",
     "preact-router": "^3.2.1",
     "react-hotkeys": "^2.0.0",
+    "react-linkify": "^1.0.0-alpha",
     "react-tiny-virtual-list": "^2.2.0"
   },
   "jest": {

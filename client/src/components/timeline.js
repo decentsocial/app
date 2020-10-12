@@ -2,6 +2,7 @@ import { h } from 'preact'
 import { useState } from 'preact/hooks'
 import timelineStyles from './timeline.css'
 import VirtualList from 'react-tiny-virtual-list'
+import Linkify from 'react-linkify'
 
 const Timeline = (props) => {
   const [retweets, setRetweets] = useState(false)
@@ -54,7 +55,7 @@ const Timeline = (props) => {
                   </h5>
                   <span class='tooltip blue'><p>{t.date}</p></span>
                 </div>
-                <p class='w-100 mb-1 text-left py-2'>{t.formatted || t.text}</p>
+                <p class='w-100 mb-1 text-left py-2'><Linkify>{t.formatted || t.text}</Linkify></p>
               </li>}
           />
         </ul>
