@@ -96,13 +96,13 @@ export default class App extends Component {
         <Alert alert={this.state.alert} />
         <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />
         {this.state.search && 
-          <div style='position: fixed; top: 0; left: 0; right: 0; background: lightgrey; padding: 3em 2em;'>
+          <div style='position: fixed; top: 0; left: 0; right: 0; background: white; padding: 3em 2em; box-shadow: 5px 5px 5px #ddd;'>
             <div class="container">
               <div class="row">
                 <div class="col-md-9">
                   <div class="input-group m-0">
                   <span class="input-group-text">Search</span>
-                    <input autoFocus={true} onInput={(e) => this.performSearch(e)} class="form-control" type="text" placeholder="Type in your search terms" />
+                    <input autofocus onInput={(e) => this.performSearch(e)} class="form-control" type="text" placeholder="Type in your search terms" />
                   </div>
                 </div>
                 <div class="col-md-3">
