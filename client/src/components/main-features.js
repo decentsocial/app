@@ -30,7 +30,7 @@ const MainFeatures = (props) => {
             Search through your timeline, extremely fast and intuitive.
             <br />
             <br />
-            <b>Activate the search bar</b> through the keyboard shorcut <b>alt + s</b>.
+            <b>Activate the search bar</b> through the keyboard shorcut <b>shift + /</b>.
             <br />
             <br />
             Looking for an account? Put an <b>@</b> in front of your search term.
