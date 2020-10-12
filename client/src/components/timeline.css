@@ -8,6 +8,7 @@
 }
 
 .timeline {
+  max-height: 100%;
   /* background: red !important; */
   /* margin-top: 3em; */
   /* padding-top: 3em; */

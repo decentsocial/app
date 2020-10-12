@@ -1,5 +1,6 @@
 import { h, Component } from 'preact'
 import { Router } from 'preact-router'
+import { GlobalHotKeys } from 'react-hotkeys'
 
 import * as ApiService from '../api-service'
 import Header from './header'
@@ -20,7 +21,8 @@ export default class App extends Component {
       user: undefined,
       timeline: [],
       lastIndex: undefined,
-      alert: undefined
+      alert: undefined,
+      search: undefined
     }
   }
 
@@ -60,6 +62,24 @@ export default class App extends Component {
         this.setState({ timeline: [], alert: undefined })
       })
   }
+  keyMap = { 
+    SEARCH: 'shift+/'
+  }
+  handlers = {
+    SEARCH: () => {
+      console.log('shift+/ pressed', this)
+      this.setState({ search: true })
+    }
+  }
+
+  performSearch (e) {
+    const search = e.target.value.toLowerCase()
+    console.log('performSearch', search)
+    this.setState({
+      filteredTimeline: this.state.timeline
+        .filter(t => t.author.toLowerCase().includes(search) || t.text.toLowerCase().includes(search))
+    })
+  }
 
   render () {
     if (window.location.hash) return null
@@ -67,10 +87,28 @@ export default class App extends Component {
       <div class=''>
         <Header user={this.state.user} />
         <Router>
-          <Home path='/' user={this.state.user} timeline={this.state.timeline} lastIndex={this.state.lastIndex} />
+          <Home path='/' user={this.state.user} timeline={this.state.filteredTimeline || this.state.timeline} lastIndex={this.state.lastIndex} />
           <Settings path='/settings' user={this.state.user} />
         </Router>
         <Alert alert={this.state.alert} />
+        <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />;
+        {this.state.search && 
+          <div style='position: fixed; top: 0; left: 0; right: 0; background: lightgrey; padding: 3em 2em;'>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="input-group m-0">
+                  <span class="input-group-text">Search</span>
+                    <input autoFocus={true} onInput={(e) => this.performSearch(e)} class="form-control" type="text" placeholder="Type in your search terms" />
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-md" onClick={() => this.setState({search: false})}>Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
       </div>
     )
   }

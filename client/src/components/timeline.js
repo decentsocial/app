@@ -25,11 +25,11 @@ const Timeline = (props) => {
           </label>
         </div>
       </div>
-      <div class='col-lg-6 col-md-12 p-0 mx-auto'>
+      <div class='col-lg-6 col-md-12 p-0 mx-auto overflow-hidden'>
         <ul class='border-0 m-0 p-0'>
           <VirtualList
             width='100%'
-            height='100vh'
+            height='97vh'
             itemCount={timeline.length}
             itemSize={(i => {
               const item = timeline[i]
