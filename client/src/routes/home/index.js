@@ -14,7 +14,7 @@ const Home = (props) => {
   }
 
   return (
-    <div class='container'>
+    <div class='container text-center'>
       {props.user === null && (
         <div class='py-5 mt-5'>
           <p><a href='#' tabIndex={1} onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>
@@ -65,7 +65,10 @@ const Home = (props) => {
             There will be added more customizations based on your feedback.
             <br />
             <br />
-            So let me know what you think by <a href='https://decent.social/#cta'>subscribing to the newsletter</a> and get in touch with me!
+            So let me know what you think by <a href='https://decent.social/#cta'>subscribing to the newsletter</a>
+            <br />
+            <br />
+            Get in touch with me!
           </p>
           <video controls autoPlay loop class='img-fluid mt-5'>
             <source src='https://decent.social/video/app.decent.social-settings.mp4' type='video/mp4' />
