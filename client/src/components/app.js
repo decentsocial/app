@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 // Code-splitting is automated for `routes` directory
 import Home from '../routes/home'
 import Settings from '../routes/settings'
+import Status from '../routes/status'
 // import Profile from '../routes/profile'
 
 import Alert from '../components/alert'
@@ -84,7 +85,7 @@ export default class App extends Component {
   }
 
   render () {
-    if (window.location.hash) return null
+    if (window.location.hash && window.location.hash.length > 1) return null
     trackEvent('rendered-timeline')
     return (
       <div class=''>
@@ -92,6 +93,7 @@ export default class App extends Component {
         <Router>
           <Home path='/' user={this.state.user} timeline={this.state.filteredTimeline || this.state.timeline} />
           <Settings path='/settings' user={this.state.user} />
+          <Status path='/status/:id' timeline={this.state.timeline} />
         </Router>
         <Alert alert={this.state.alert} />
         <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />

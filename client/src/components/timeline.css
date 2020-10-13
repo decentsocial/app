@@ -4,6 +4,8 @@
   transition: box-shadow .1 s ease;
   border: none !important;
   outline: none !important;
+  text-decoration: none !important;
+  color: #333 !important;
 }
 .tweet:focus {
   box-shadow: 5px 0px 20px lightgrey;
