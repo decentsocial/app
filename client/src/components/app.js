@@ -3,6 +3,7 @@ import { Router } from 'preact-router'
 import { GlobalHotKeys } from 'react-hotkeys'
 
 import * as ApiService from '../api-service'
+import { trackEvent } from '../analytics'
 import Header from './header'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'animate.css/animate.min.css'
@@ -75,6 +76,7 @@ export default class App extends Component {
   performSearch (e) {
     const search = e.target.value.toLowerCase()
     console.log('performSearch', search)
+    trackEvent('performed-search')
     this.setState({
       filteredTimeline: this.state.timeline
         .filter(t => t.author.toLowerCase().includes(search) || t.text.toLowerCase().includes(search))
@@ -83,6 +85,7 @@ export default class App extends Component {
 
   render () {
     if (window.location.hash) return null
+    trackEvent('rendered-timeline')
     return (
       <div class=''>
         <Header user={this.state.user} />
