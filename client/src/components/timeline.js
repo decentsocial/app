@@ -8,8 +8,8 @@ const Timeline = (props) => {
     .filter(t => props.replies ? true : !t.reply)
 
   return (
-    <div class={timelineStyles.timeline}>
-      <div class='col-lg-6 col-md-12 p-0 mx-auto overflow-hidden'>
+    <div class={timelineStyles.timeline + ' '}>
+      <div class='col-lg-6 col-md-12 p-0 mx-auto'>
         <VirtualList
           width='100%'
           height='97vh'
