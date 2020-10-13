@@ -1,3 +1,12 @@
+.inline {
+  display: inline-block;
+  width: 15em;
+  margin: 1em auto;
+  padding: 1em 1.5em;
+  background: lightgrey;
+  box-shadow: 0px 5px 5px lightgrey;
+  animation: slideInTop 1s ease;
+}
 .alert {
   position: fixed;
   bottom: 0em;
