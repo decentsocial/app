@@ -18,7 +18,8 @@ const Timeline = (props) => {
             const item = timeline[i]
             const text = item.formatted || item.text || '\n'
             const newLinesCount = text.split('\n').length
-            return 200 + newLinesCount * 15 + text.length * 0.3
+            const imagesCount = text.split('<img').length
+            return 200 + imagesCount * 100 + newLinesCount * 15 + text.length * 0.3
           })}
           scrollToAlignment='center'
           overscanCount={10}
