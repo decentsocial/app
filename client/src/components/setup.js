@@ -16,7 +16,7 @@ class Setup extends Component {
 
   handleSubmitSetup (event) {
     event.preventDefault()
-  
+
     let twitterHandle = event.target.querySelector('#twitterHandle').value
     let following = event.target.querySelector('#following').value
     twitterHandle = twitterHandle.replace('@', '')
@@ -45,7 +45,7 @@ class Setup extends Component {
   render (props) {
     console.log('setup props.user', props.user)
     console.log('setup this.state', this.state)
-    
+
     let settings = {}
     if (this.state.settings) settings = this.state.settings
     if (props.user && props.user.settings) settings = props.user.settings
