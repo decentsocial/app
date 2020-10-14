@@ -13,14 +13,12 @@ const Home = (props) => {
     )
   }
 
-  console.log('props.user', props.user, props.timeline)
-
-  const emptyTimeline = !props.timeline || !Array.isArray(props.timeline) || props.timeline.length === 0
+  console.log('props.user', props.user)
 
   return (
     <div class='container text-center'>
-      {emptyTimeline && <DummyTweets />}
       {props.user === null && <MainFeatures />}
+      {(Array.isArray(props.timeline) && props.timeline.length === 0 && props.user !== null) && <DummyTweets />}
       {props.user && (
         <div class=''>
           {!props.user.setupComplete && <Setup user={props.user} />}
