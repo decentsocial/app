@@ -12,7 +12,7 @@ const Timeline = (props) => {
     <VirtualList
       class={timelineStyles.timeline + ' col-lg-6 col-md-12 mx-auto p-0'}
       width='100%'
-      height='97vh'
+      height='100vh'
       itemCount={timeline.length}
       itemSize={(i => {
         const item = timeline[i]
