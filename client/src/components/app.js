@@ -12,8 +12,6 @@ import Settings from '../routes/settings'
 import Status from '../routes/status'
 
 import Alert from '../components/alert'
-import store from '../store'
-import { events } from '../store'
 
 export default class App extends Component {
   constructor () {
@@ -26,8 +24,12 @@ export default class App extends Component {
   }
 
   componentDidMount () {
-    events.getUserInfo()
-      .catch(err => window.debug && console.error(err.message))
+    ApiService.getUserInfo()
+      .then(user => this.setState({ user }))
+      .catch(err => {
+        window.debug && console.error(err.message)
+        this.setState({ user: null })
+      })
 
     let cachedTimeline = window.localStorage.getItem('timeline')
     let since
@@ -83,10 +85,10 @@ export default class App extends Component {
     trackEvent('rendered-timeline')
     return (
       <div class=''>
-        <Header user={store.user} />
+        <Header user={this.state.user} />
         <Router>
-          <Home path='/' user={store.user} timeline={this.state.filteredTimeline || this.state.timeline} />
-          <Settings path='/settings' user={store.user} />
+          <Home path='/' user={this.state.user} timeline={this.state.filteredTimeline || this.state.timeline} />
+          <Settings path='/settings' user={this.state.user} />
           <Status path='/status/:id' timeline={this.state.timeline} />
         </Router>
         <Alert alert={this.state.alert} />
