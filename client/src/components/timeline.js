@@ -16,10 +16,11 @@ const Timeline = (props) => {
       itemCount={timeline.length}
       itemSize={(i => {
         const item = timeline[i]
-        const text = item.formatted || item.text || '\n'
-        const newLinesCount = text.split('\n').length
-        const imagesCount = text.split('<img').length
-        return 100 + imagesCount * 150 + newLinesCount * 10 + text.length * 0.2
+        const text = item.html || item.formatted || item.text || '\n'
+        const newLinesCount = text.split('\n').filter(Boolean).length
+        const imagesCount = text.split('<img').filter(Boolean).length - 1
+        const size = 200 + imagesCount * 220 + newLinesCount * 16 + text.length * 0.2
+        return size
       })}
       scrollToAlignment='center'
       overscanCount={10}
