@@ -21,7 +21,7 @@ export async function getUserInfo () {
   return json(base('/user/info'), options())
 }
 
-export async function getUserTimeline ({ since }) {
+export async function getUserTimeline ({ since } = {}) {
   if (!getAccessToken()) {
     console.log('no access token')
     throw new Error('no access token')

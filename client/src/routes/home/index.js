@@ -5,7 +5,6 @@ import DummyTweets from '../../components/dummy-tweets'
 import MainFeatures from '../../components/main-features'
 
 const Home = (props) => {
-  console.log('window.location.hash', window.location.hash)
   if (window.location.hash && window.location.hash !== '') {
     return (
       <div class='container'>

@@ -19,7 +19,7 @@ class Setup extends Component {
       console.log('settings with options', options)
       const state = useStore.getState()
       state.updateUserSettings(options)
-        // .then(() => state.getUserTimeline())
+        .then(() => state.getUserTimeline({ force: true }))
     }
   }
 

@@ -19,6 +19,7 @@ export default class App extends Component {
       search: undefined,
       filteredTimeline: undefined
     }
+    this.intervalHandle = undefined
   }
 
   componentDidMount () {
@@ -26,7 +27,12 @@ export default class App extends Component {
     state.getUserInfo()
     state.loadCachedTimeline()
     state.getUserTimeline()
+    this.intervalHandle = setInterval(() => state.getUserTimeline(), 1000 * 60)
   }
+  componentWillUnmount () {
+    clearInterval(this.intervalHandle)
+  }
+  
   keyMap = { 
     EXIT: 'esc',
     SEARCH: 'shift+/',
