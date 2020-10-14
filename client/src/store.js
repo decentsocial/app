@@ -1,17 +1,15 @@
 import * as ApiService from './api-service'
 
-const store = {
-  user: undefined
-}
+import create from 'zustand'
 
-export default store
-export const events = {
+export default create(set => ({
+  user: undefined,
   async getUserInfo () {
     return ApiService.getUserInfo()
-      .then(user => Object.assign(store, { user }))
+      .then(user => set({ user }))
       .catch(err => {
         window.debug && console.error(err.message)
-        return Object.assign(store, { user: null })
+        set({ user: null })
       })
   }
-}
+}))
