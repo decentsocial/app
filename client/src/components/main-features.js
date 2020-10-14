@@ -17,7 +17,7 @@ const MainFeatures = (props) => {
             <br />
             Navigate the timeline using <code>TAB</code>, your mouse, or finger since Decent runs on the Web!
           </p>
-          <video controls autoPlay loop class='img-fluid mt-5'>
+          <video controls autoPlay1 loop class='img-fluid mt-5'>
             <source src='https://decent.social/video/app.decent.social-browsing-timeline.mp4' type='video/mp4' />
             <source src='https://decent.social/video/app.decent.social-browsing-timeline.webm' type='video/webm' />
             <p>Your browser doesn't support HTML5 video. Here is
@@ -38,7 +38,7 @@ const MainFeatures = (props) => {
             <br />
             Just looking for a topic, e.g. "open source"? You already know what to do.
           </p>
-          <video controls autoPlay loop class='img-fluid mt-5'>
+          <video controls autoPlay1 loop class='img-fluid mt-5'>
             <source src='https://decent.social/video/app.decent.social-search.mp4' type='video/mp4' />
             <source src='https://decent.social/video/app.decent.social-search.webm' type='video/webm' />
             <p>Your browser doesn't support HTML5 video. Here is
@@ -59,7 +59,7 @@ const MainFeatures = (props) => {
             <br />
             Get in touch with me!
           </p>
-          <video controls autoPlay loop class='img-fluid mt-5'>
+          <video controls autoPlay1 loop class='img-fluid mt-5'>
             <source src='https://decent.social/video/app.decent.social-settings.mp4' type='video/mp4' />
             <source src='https://decent.social/video/app.decent.social-settings.webm' type='video/webm' />
             <p>Your browser doesn't support HTML5 video. Here is
