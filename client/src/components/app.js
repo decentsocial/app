@@ -2,7 +2,6 @@ import { h, Component } from 'preact'
 import { Router } from 'preact-router'
 import { GlobalHotKeys } from 'react-hotkeys'
 
-import * as ApiService from '../api-service'
 import { trackEvent } from '../analytics'
 import Header from './header'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -11,7 +10,6 @@ import Home from '../routes/home'
 import Settings from '../routes/settings'
 import Status from '../routes/status'
 
-import Alert from '../components/alert'
 import useStore from '../store'
 
 export default class App extends Component {
@@ -59,7 +57,6 @@ export default class App extends Component {
     trackEvent('rendered-timeline')
     const user = useStore(state => state.user)
     const timeline = useStore(state => state.timeline)
-    const alert = useStore(state => state.alert)
     const loading = useStore(state => state.loading)
     return (
       <div class=''>
@@ -69,7 +66,6 @@ export default class App extends Component {
           <Settings path='/settings' user={user} />
           <Status path='/status/:id' timeline={timeline} />
         </Router>
-        {/* <Alert alert={alert} /> */}
         <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />
         {this.state.search && 
           <div style='position: fixed; top: 0; left: 0; right: 0; background: white; padding: 3em 2em; box-shadow: 5px 5px 5px #ddd;'>

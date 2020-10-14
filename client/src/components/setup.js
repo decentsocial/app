@@ -1,12 +1,10 @@
 import { h, Component } from 'preact'
 import { updateUserSettings } from '../api-service'
-import Alert from '../components/alert'
 
 class Setup extends Component {
   constructor () {
     super()
     this.state = {
-      alert: undefined,
       settings: {
         twitterHandle: '@elonmusk',
         following: []
@@ -31,13 +29,13 @@ class Setup extends Component {
       return updateUserSettings(options)
         .then(settings => {
           console.log('updated settings', settings)
-          this.setState({ alert: 'Updated settings', settings })
+          this.setState({ settings })
           window.location.reload()
         })
         .catch(err => {
           console.error(err)
-          this.setState({ alert: 'Failed to update settings' })
-          setTimeout(() => this.setState({ alert: undefined }), 1500)
+          this.setState({  })
+          setTimeout(() => this.setState({  }), 1500)
         })
     }
   }
@@ -74,7 +72,6 @@ class Setup extends Component {
         <div class='col-sm-12 p-0'>
           <button class='btn btn-md btn-primary'>Complete setup</button>
         </div>
-        <Alert inline alert={this.state.alert} />
       </form>
     )
   }

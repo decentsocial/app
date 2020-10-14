@@ -3,7 +3,6 @@ import * as ApiService from './api-service'
 import create from 'zustand'
 
 export default create((set, get) => ({
-  alert: undefined,
   loading: false,
   user: undefined,
   async getUserInfo () {
@@ -27,19 +26,19 @@ export default create((set, get) => ({
   async getUserTimeline () {
     const since = get().since
     const cachedTimeline = get().timeline
-    set({ loading: true, alert: 'Loading updates..' })
+    set({ loading: true })
     ApiService.getUserTimeline({ since })
       .then(newTimeline => {
         const timeline = newTimeline.map(t => Object.assign(t, { status: '/status' + t.link.replace(/.*\/status/, '').replace(/#.*/, '') }))
         if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)
         const since = timeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(timeline[0].date))
-        set({ timeline, since, loading: false, alert: "You're up to date." })
+        set({ timeline, since, loading: false })
         window.localStorage.setItem('timeline', JSON.stringify(timeline))
-        setTimeout(() => { set({ loading: false, alert: undefined }) }, 1500)
+        setTimeout(() => { set({ loading: false }) }, 1500)
       })
       .catch(err => {
         console.error(err)
-        set({ timeline: [], loading: false, alert: undefined })
+        set({ timeline: [], loading: false })
       })
   }
 }))
