@@ -6,21 +6,19 @@ import * as ApiService from '../api-service'
 import { trackEvent } from '../analytics'
 import Header from './header'
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import 'animate.css/animate.min.css'
 
-// Code-splitting is automated for `routes` directory
 import Home from '../routes/home'
 import Settings from '../routes/settings'
 import Status from '../routes/status'
-// import Profile from '../routes/profile'
 
 import Alert from '../components/alert'
+import store from '../store'
+import { events } from '../store'
 
 export default class App extends Component {
   constructor () {
     super()
     this.state = {
-      user: undefined,
       timeline: [],
       alert: undefined,
       search: undefined
@@ -28,12 +26,8 @@ export default class App extends Component {
   }
 
   componentDidMount () {
-    ApiService.getUserInfo()
-      .then(user => this.setState({ user }))
-      .catch(err => {
-        window.debug && console.error(err.message)
-        this.setState({ user: null })
-      })
+    events.getUserInfo()
+      .catch(err => window.debug && console.error(err.message))
 
     let cachedTimeline = window.localStorage.getItem('timeline')
     let since
@@ -89,10 +83,10 @@ export default class App extends Component {
     trackEvent('rendered-timeline')
     return (
       <div class=''>
-        <Header user={this.state.user} />
+        <Header user={store.user} />
         <Router>
-          <Home path='/' user={this.state.user} timeline={this.state.filteredTimeline || this.state.timeline} />
-          <Settings path='/settings' user={this.state.user} />
+          <Home path='/' user={store.user} timeline={this.state.filteredTimeline || this.state.timeline} />
+          <Settings path='/settings' user={store.user} />
           <Status path='/status/:id' timeline={this.state.timeline} />
         </Router>
         <Alert alert={this.state.alert} />
