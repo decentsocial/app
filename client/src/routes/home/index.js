@@ -16,17 +16,13 @@ const Home = (props) => {
 
   return (
     <div class='container text-center'>
+      {(!props.timeline && props.user !== null) && <DummyTweets />}
       {props.user === null && <MainFeatures />}
       {props.user && (
         <div class=''>
           {!props.user.setupComplete && <Setup user={props.user} />}
-          {props.user.setupComplete && (
-            <div class=''>
-              {(!Array.isArray(props.timeline) || props.timeline.length === 0) && <DummyTweets />}
-              {(Array.isArray(props.timeline) && props.timeline.length > 0) &&
-                <Timeline user={props.user} timeline={props.timeline} retweets={false} replies={false} />}
-            </div>
-          )}
+          {props.user.setupComplete && Array.isArray(props.timeline) && props.timeline.length > 0 &&
+            <Timeline user={props.user} timeline={props.timeline} retweets={false} replies={false} />}
         </div>
       )}
     </div>
