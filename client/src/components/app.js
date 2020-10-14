@@ -60,15 +60,16 @@ export default class App extends Component {
     const user = useStore(state => state.user)
     const timeline = useStore(state => state.timeline)
     const alert = useStore(state => state.alert)
+    const loading = useStore(state => state.loading)
     return (
       <div class=''>
-        <Header user={user} />
+        <Header user={user} loading={loading} />
         <Router>
           <Home path='/' user={user} timeline={this.state.filteredTimeline || timeline} />
           <Settings path='/settings' user={user} />
           <Status path='/status/:id' timeline={timeline} />
         </Router>
-        <Alert alert={alert} />
+        {/* <Alert alert={alert} /> */}
         <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />
         {this.state.search && 
           <div style='position: fixed; top: 0; left: 0; right: 0; background: white; padding: 3em 2em; box-shadow: 5px 5px 5px #ddd;'>

@@ -26,7 +26,7 @@ const Timeline = (props) => {
       renderItem={({ index, style, t = timeline[index] }) =>
         <div id={`t${+new Date(t.date)}`} tabIndex={index + 2} key={index} style={style} class={timelineStyles.tweet + ' p-0 mx-auto p-0 border-0 py-5 text-decoration-none'}>
           <div class=''>
-            <small class='float-right text-muted has-tooltip'><Link href={'/status' + t.link.replace(/.*\/status/, '').replace(/#.*/, '')}>{new Date(t.date).toISOString().substring(0, 16)}</Link></small>
+            <small class='float-right text-muted has-tooltip'><Link href={t.status}>{new Date(t.date).toISOString().substring(0, 16)}</Link></small>
             <h5 class='mb-1 text-muted text-left'>
               <div style={`display: inline-block; border-radius: 50%; margin-right: 2em; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-image: url(${t.authorAvatar})`} />
               {t.author}

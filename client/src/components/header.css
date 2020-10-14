@@ -23,3 +23,12 @@
   border: 1px solid #333;
   border-radius: 50%;
 }
+.rotate {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateZ(360deg)
+  }
+}
