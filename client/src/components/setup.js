@@ -1,17 +1,8 @@
 import { h, Component } from 'preact'
-import { updateUserSettings } from '../api-service'
+// import { updateUserSettings } from '../api-service'
+import useStore from '../store'
 
 class Setup extends Component {
-  constructor () {
-    super()
-    this.state = {
-      settings: {
-        twitterHandle: '@elonmusk',
-        following: []
-      }
-    }
-  }
-
   handleSubmitSetup (event) {
     event.preventDefault()
 
@@ -26,27 +17,17 @@ class Setup extends Component {
       if (twitterHandle) options.twitterHandle = twitterHandle
       if (following) options.following = following
       console.log('settings with options', options)
-      return updateUserSettings(options)
-        .then(settings => {
-          console.log('updated settings', settings)
-          this.setState({ settings })
-          window.location.reload()
-        })
-        .catch(err => {
-          console.error(err)
-          this.setState({  })
-          setTimeout(() => this.setState({  }), 1500)
-        })
+      const state = useStore.getState()
+      state.updateUserSettings(options)
+        // .then(() => state.getUserTimeline())
     }
   }
 
   render (props) {
+    if (!props.user) return null
     console.log('setup props.user', props.user)
-    console.log('setup this.state', this.state)
 
-    let settings = {}
-    if (this.state.settings) settings = this.state.settings
-    if (props.user && props.user.settings) settings = props.user.settings
+    const { settings } = props.user
     const followingText = settings.following ? settings.following.map(t => `@${t}`).join(' ') : ''
 
     return (

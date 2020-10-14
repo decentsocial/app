@@ -4,14 +4,27 @@ import create from 'zustand'
 
 export default create((set, get) => ({
   loading: false,
+  setLoading (loading) { set({ loading }) },
   user: undefined,
   async getUserInfo () {
+    set({ loading: true })
     return ApiService.getUserInfo()
       .then(user => set({ user }))
       .catch(err => {
         window.debug && console.error(err.message)
         set({ user: null })
       })
+      .finally(() => set({ loading: false }))
+  },
+  async updateUserSettings ({ twitterHandle, following } = {}) {
+    set({ loading: true })
+    return ApiService.updateUserSettings({ twitterHandle, following })
+      .then(settings => set({ user: { ...get().user, settings } }))
+      .catch(err => {
+        window.debug && console.error(err.message)
+        // set({ user: null })
+      })
+      .finally(() => set({ loading: false }))
   },
   timeline: [],
   since: undefined,
