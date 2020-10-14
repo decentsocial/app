@@ -64,9 +64,10 @@ export default class App extends Component {
     const user = useStore(state => state.user)
     const timeline = useStore(state => state.timeline)
     const loading = useStore(state => state.loading)
+    const icon = useStore(state => state.icon)
     return (
       <div class=''>
-        <Header user={user} loading={loading} />
+        <Header user={user} loading={loading} icon={icon} />
         <Router>
           <Home path='/' user={user} timeline={this.state.filteredTimeline || timeline} />
           <Settings path='/settings' user={user} />

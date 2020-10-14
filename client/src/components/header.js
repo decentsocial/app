@@ -37,7 +37,7 @@ class Header extends Component {
           </div>
         </nav>
         <button tabIndex={0} style='z-index: 9999;' class={styles.toggle + ' btn btn-sm bg-white rounded'} onClick={() => setClosed(closed => !closed)}>
-          {props.loading ? svgLoading() : svgMenu()}
+          {props.icon ? props.icon : (props.loading ? svgLoading() : svgMenu())}
         </button>
       </header>
     )
