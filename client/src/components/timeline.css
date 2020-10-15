@@ -6,6 +6,7 @@
   outline: none !important;
   text-decoration: none !important;
   color: #333 !important;
+  padding: 1em;
 }
 .tweet:focus {
   box-shadow: 5px 0px 20px lightgrey;
