@@ -6,7 +6,7 @@ const DummyTweets = () => {
       <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
         <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
           <div class=''>
-            <small class='float-right text-muted has-tooltip'>__:__AM</small>
+            <small class='float-right text-muted'>__:__AM</small>
             <h5 class='mb-1 text-muted text-left'>
               <div style='display: inline-block; border-radius: 50%; margin-right: 2em; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-color: lightgrey' />
             @____
@@ -18,7 +18,7 @@ const DummyTweets = () => {
       <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
         <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
           <div class=''>
-            <small class='float-right text-muted has-tooltip'>__:__AM</small>
+            <small class='float-right text-muted'>__:__AM</small>
             <h5 class='mb-1 text-muted text-left'>
               <div style='display: inline-block; border-radius: 50%; margin-right: 2em; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-color: lightgrey' />
             @_______
@@ -30,7 +30,7 @@ const DummyTweets = () => {
       <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
         <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
           <div class=''>
-            <small class='float-right text-muted has-tooltip'>__:__PM</small>
+            <small class='float-right text-muted'>__:__PM</small>
             <h5 class='mb-1 text-muted text-left'>
               <div style='display: inline-block; border-radius: 50%; margin-right: 2em; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-color: lightgrey' />
             @______________
@@ -42,7 +42,7 @@ const DummyTweets = () => {
       <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
         <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
           <div class=''>
-            <small class='float-right text-muted has-tooltip'>__:__PM</small>
+            <small class='float-right text-muted'>__:__PM</small>
             <h5 class='mb-1 text-muted text-left'>
               <div style='display: inline-block; border-radius: 50%; margin-right: 2em; height: 2em; width: 2em; vertical-align: middle; background-size: contain; background-color: lightgrey' />
             @_________
