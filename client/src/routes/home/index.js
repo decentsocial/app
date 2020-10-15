@@ -19,13 +19,9 @@ const Home = (props) => {
     <div class='container text-center'>
       {props.user === null && <MainFeatures />}
       {(Array.isArray(props.timeline) && props.timeline.length === 0 && props.user !== null) && <DummyTweets />}
-      {props.user && (
-        <div class=''>
-          {!props.user.setupComplete && <Setup user={props.user} />}
-          {props.user.setupComplete && Array.isArray(props.timeline) && props.timeline.length > 0 &&
-            <Timeline user={props.user} timeline={props.timeline} retweets={false} replies={false} />}
-        </div>
-      )}
+      {props.user && !props.user.setupComplete && <Setup user={props.user} />}
+      {props.user && props.user.setupComplete && Array.isArray(props.timeline) && props.timeline.length > 0 &&
+        <Timeline user={props.user} timeline={props.timeline} retweets={false} replies={false} />}
     </div>
   )
 }

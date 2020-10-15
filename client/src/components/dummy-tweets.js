@@ -2,9 +2,9 @@ import timelineStyles from './timeline.css'
 
 const DummyTweets = () => {
   return (
-    <div class='row1 user-select-none'>
-      <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
-        <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
+    <div class='user-select-none'>
+      <div class=''>
+        <div class={timelineStyles.tweet + ' p-0 border-0 py-5 mx-auto'}>
           <div class=''>
             <small class='float-right text-muted'>__:__AM</small>
             <h5 class='mb-1 text-muted text-left'>
@@ -12,11 +12,9 @@ const DummyTweets = () => {
             @____
             </h5>
           </div>
-          <p class='w-100 mb-1 text-left py-2'>_________________________________________________<br />__________________________________________________________<br />________________<br />_____</p>
+          <p class='w-100 mb-1 text-left py-3'>_________________________________________________<br />__________________________________________________________<br />________________<br />_____</p>
         </div>
-      </div>
-      <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
-        <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
+        <div class={timelineStyles.tweet + ' p-0 border-0 py-5 mx-auto'}>
           <div class=''>
             <small class='float-right text-muted'>__:__AM</small>
             <h5 class='mb-1 text-muted text-left'>
@@ -26,9 +24,7 @@ const DummyTweets = () => {
           </div>
           <p class='w-100 mb-1 text-left py-2'>__________________________________<br />______________<br /></p>
         </div>
-      </div>
-      <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
-        <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
+        <div class={timelineStyles.tweet + ' p-0 border-0 py-5 mx-auto'}>
           <div class=''>
             <small class='float-right text-muted'>__:__PM</small>
             <h5 class='mb-1 text-muted text-left'>
@@ -38,9 +34,7 @@ const DummyTweets = () => {
           </div>
           <p class='w-100 mb-1 text-left py-2'>_________________________________________<br />_____________________________________<br />____________________________<br />_____</p>
         </div>
-      </div>
-      <div class={' col-lg-6 col-md-12 p-0 mx-auto p-0'}>
-        <div class={timelineStyles.tweet + ' p-0 border-0 py-5'}>
+        <div class={timelineStyles.tweet + ' p-0 border-0 py-5 mx-auto'}>
           <div class=''>
             <small class='float-right text-muted'>__:__PM</small>
             <h5 class='mb-1 text-muted text-left'>

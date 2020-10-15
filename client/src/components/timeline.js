@@ -10,7 +10,6 @@ const Timeline = (props) => {
 
   return (
     <Virtuoso
-      class={timelineStyles.timeline + ' col-lg-6 col-md-12 mx-auto p-0'}
       style={{ width: '100%', height: '100vh' }}
       totalCount={timeline.length}
       item={index => {
