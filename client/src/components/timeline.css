@@ -8,7 +8,7 @@
   color: #333 !important;
   padding: 1em;
 }
-.tweet:focus {
+.tweet:hover {
   box-shadow: 5px 0px 20px lightgrey;
 }
 .tweet p {

@@ -16,7 +16,7 @@ const Timeline = (props) => {
       item={index => {
         const t = timeline[index]
         return (
-          <div id={`t${+new Date(t.date)}`} tabIndex={index + 2} key={index} class={timelineStyles.tweet + ' mx-auto border-0 py-5 text-decoration-none'}>
+          <div key={index} class={timelineStyles.tweet + ' mx-auto border-0 py-5 text-decoration-none'}>
             <div class=''>
               <small class='float-right text-muted'><Link href={t.status} class='text-decoration-none'>{new Date(t.date).toISOString().substring(0, 16)}</Link></small>
               <h5 class='mb-1 text-muted text-left'>
