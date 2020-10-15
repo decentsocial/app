@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import { Link } from 'preact-router'
+import { Link, route } from 'preact-router'
 import timelineStyles from './timeline.css'
 import { Virtuoso } from 'react-virtuoso'
 
@@ -16,7 +16,7 @@ const Timeline = (props) => {
       item={index => {
         const t = timeline[index]
         return (
-          <div key={index} class={timelineStyles.tweet + ' mx-auto border-0 py-5 text-decoration-none'}>
+          <div key={index} class={timelineStyles.tweet + ' mx-auto border-0 py-5 user-selection-none'} onDoubleClick={() => route(t.status)}>
             <div class=''>
               <small class='float-right text-muted'><Link href={t.status} class='text-decoration-none'>{new Date(t.date).toISOString().substring(0, 16)}</Link></small>
               <h5 class='mb-1 text-muted text-left'>
