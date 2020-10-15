@@ -12,6 +12,7 @@ const Timeline = (props) => {
     <Virtuoso
       style={{ width: '100%', height: '100vh' }}
       totalCount={timeline.length}
+      overscan={5}
       item={index => {
         const t = timeline[index]
         return (
