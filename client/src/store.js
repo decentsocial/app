@@ -8,14 +8,12 @@ export default create((set, get) => ({
   setLoading (loading) { set({ loading }) },
   user: undefined,
   async getUserInfo () {
-    set({ loading: true })
     return ApiService.getUserInfo()
       .then(user => set({ user }))
       .catch(err => {
         window.debug && console.error(err.message)
         set({ user: null })
       })
-      .finally(() => set({ loading: false }))
   },
   async updateUserSettings ({ twitterHandle, following } = {}) {
     set({ loading: true })
@@ -23,7 +21,6 @@ export default create((set, get) => ({
       .then(settings => set({ user: { ...get().user, settings } }))
       .catch(err => {
         window.debug && console.error(err.message)
-        // set({ user: null })
       })
       .finally(() => set({ loading: false }))
   },
@@ -43,13 +40,16 @@ export default create((set, get) => ({
       return ApiService.getUserTimeline()
         .then(timeline => {
           const since = timeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(timeline[0].date))
-          set({ timeline, since, loading: false, icon: svgCheck() })
-          setTimeout(() => set({ icon: undefined }), 1500)
+          set({ timeline, since, icon: svgCheck() })
+          setTimeout(() => set({ icon: undefined }), 1000)
           window.localStorage.setItem('timeline', JSON.stringify(timeline))
         })
         .catch(err => {
           console.error(err)
           set({ timeline: [], loading: false })
+        })
+        .finally(() => {
+          set({ loading: false })
         })
     }
     const since = get().since
@@ -58,13 +58,16 @@ export default create((set, get) => ({
       .then(timeline => {
         if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)
         const since = timeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(timeline[0].date))
-        set({ timeline, since, loading: false, icon: svgCheck() })
-        setTimeout(() => set({ icon: undefined }), 1500)
+        set({ timeline, since, icon: svgCheck() })
+        setTimeout(() => set({ icon: undefined }), 1000)
         window.localStorage.setItem('timeline', JSON.stringify(timeline))
       })
       .catch(err => {
         console.error(err)
         set({ timeline: [], loading: false })
+      })
+      .finally(() => {
+        set({ loading: false })
       })
   }
 }))
