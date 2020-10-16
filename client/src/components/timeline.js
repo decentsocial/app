@@ -4,11 +4,10 @@ import timelineStyles from './timeline.css'
 import { Virtuoso } from 'react-virtuoso'
 
 const debouncedSave = debounce(({ startIndex } = {}) => {
-  console.log('saving', startIndex)
   window.localStorage.setItem('lastTweetIndex', startIndex)
 }, 1000)
 
-const lastTweetIndex = +window.localStorage.getItem('lastTweetIndex')
+let lastTweetIndex = +window.localStorage.getItem('lastTweetIndex')
 
 const Timeline = (props) => {
   const timeline = (props.timeline || [])
@@ -25,7 +24,13 @@ const Timeline = (props) => {
       item={index => {
         const t = timeline[index]
         return (
-          <div key={index} class={timelineStyles.tweet + ' mx-auto border-0 py-5 user-selection-none'} onDoubleClick={() => route(t.status)}>
+          <div
+            key={index} class={timelineStyles.tweet + ' mx-auto border-0 py-5 user-selection-none'} onDoubleClick={() => {
+              window.localStorage.setItem('lastTweetIndex', index)
+              lastTweetIndex = index
+              route(t.status)
+            }}
+          >
             <div class=''>
               <small class='float-right text-muted'><Link href={t.status} class='text-decoration-none'>{new Date(t.date).toISOString().substring(0, 16)}</Link></small>
               <h5 class='mb-1 text-muted text-left'>
