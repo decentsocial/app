@@ -3,7 +3,7 @@ import { login } from '../auth-service'
 
 const MainFeatures = (props) => {
   return (
-    <div class='row mt-5'>
+    <div class='row mt-5 text-center'>
       <div class='col-md-12'>
         <div class='py-5 mt-5'>
           <p><a href='#' tabIndex={1} onClick={login} class='btn btn-primary btn-sm'>Login</a> and enjoy a decent Twitter reading experience</p>
