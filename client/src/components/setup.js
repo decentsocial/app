@@ -4,8 +4,9 @@ import { route } from 'preact-router'
 import useStore from '../store'
 
 class Setup extends Component {
-  handleSubmitSetup (event) {
+  handleSubmitSetup (event, loading) {
     event.preventDefault()
+    if (loading) return
 
     let twitterHandle = event.target.querySelector('#twitterHandle').value
     let following = event.target.querySelector('#following').value
@@ -28,11 +29,13 @@ class Setup extends Component {
   render (props) {
     if (!props.user) return null
 
+    const loading = useStore(state => state.loading)
+
     const { settings } = props.user
     const followingText = settings.following ? settings.following.map(t => `@${t}`).join(' ') : ''
 
     return (
-      <form class='mt-5' onSubmit={e => this.handleSubmitSetup(e)}>
+      <form class='mt-5' onSubmit={e => this.handleSubmitSetup(e, loading)}>
         <div class='row'>
           <div class='col-lg-6 form-group mb-5'>
             <label for='twitterHandle' class='col-form-label'>
@@ -52,7 +55,7 @@ class Setup extends Component {
           </div>
         </div>
         <div class='col-sm-12 p-0'>
-          <button class='btn btn-md btn-primary'>Complete setup</button>
+          <button disabled={loading} class='btn btn-md btn-primary'>Complete setup</button>
         </div>
       </form>
     )
