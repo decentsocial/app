@@ -33,10 +33,17 @@ export default create((set, get) => ({
   timeline: [],
   since: undefined,
   loadCachedTimeline () {
-    let cachedTimeline = window.localStorage.getItem('timeline')
-    if (cachedTimeline && cachedTimeline.length > 0) {
-      cachedTimeline = JSON.parse(cachedTimeline)
-      const since = cachedTimeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(cachedTimeline[0].date))
+    let cachedTimeline = []
+    let since
+    const cached = window.localStorage.getItem('timeline')
+    if (cached && cached.length > 0) {
+      try {
+        cachedTimeline = JSON.parse(cached)
+        if (Array.isArray(cachedTimeline) && cachedTimeline.length > 0) {
+          since = cachedTimeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(cachedTimeline[0].date))
+        }
+      } catch (err) {
+      }
       set({ timeline: cachedTimeline, since })
     }
   },
