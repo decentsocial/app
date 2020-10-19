@@ -53,7 +53,7 @@ export default create((set, get) => ({
     return ApiService.getUserTimeline({ since })
       .then(timeline => {
         const cachedTimeline = get().timeline
-        if (force) {
+        if (!force) {
           if (cachedTimeline && cachedTimeline.length > 0) timeline.push(...cachedTimeline)
         }
         if (timeline && timeline.length > 0) {
@@ -65,7 +65,7 @@ export default create((set, get) => ({
       })
       .catch(err => {
         console.error(err)
-        set({ timeline: [], icon: undefined, loading: false })
+        set({ icon: undefined, loading: false })
       })
   }
 }))

@@ -21,8 +21,7 @@ class Setup extends Component {
       const state = useStore.getState()
       state.updateUserSettings(options)
         .then(() => state.getUserTimeline({ force: true }))
-        .then(() => state.toggleHeaderClosed())
-        .then(() => route('/'))
+        .then(() => { window.location.href = '/' })
     }
   }
 
