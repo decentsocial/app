@@ -18,7 +18,7 @@ const Home = (props) => {
       {props.user === null && <MainFeatures />}
       {props.user && !props.user.setupComplete && (
         <div class='mt-5'>
-          <h1 class='title display-3'>Welcome to Decent.social!</h1>
+          <h1 class='title display-3'>Welcome to Decent.social</h1>
           <h3 class='title'>One more step and you're ready to enjoy your decent timeline</h3>
           <Setup user={props.user} />
         </div>
