@@ -20,6 +20,7 @@ export default create((set, get) => ({
     return ApiService.updateUserSettings({ twitterHandle, following })
       .then(settings => set({ user: { ...get().user, settings }, loading: false }))
       .catch(err => {
+        set({ loading: false })
         window.debug && console.error(err.message)
       })
   },
