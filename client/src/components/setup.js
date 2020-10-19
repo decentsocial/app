@@ -37,13 +37,13 @@ class Setup extends Component {
               <b>Enter your Twitter handle</b><br />Retrieve the current users you follow
             </label>&nbsp;
             <div class=''>
-              <input type='text' class='form-control' placeholder={settings.twitterHandle} id='twitterHandle' aria-describedby='twitterHandleHelp' />
+              <input type='text' class='form-control' placeholder={settings.twitterHandle || '@...'} id='twitterHandle' aria-describedby='twitterHandleHelp' />
               <small id='twitterHandleHelp' class='form-text text-muted'>We'll never share your Twitter handle with anyone else.</small>
             </div>
           </div>
           <div class='col-lg-6 form-group mb-5'>
             <p class='lead mt-3'>If you prefer, enter below the users you want to follow</p>
-            <textarea class='form-control' id='following' rows='3'>
+            <textarea class='form-control' id='following' rows='3' placeholder='elonmusk lexfridman ProfFeynman'>
               {followingText}
             </textarea>
             <small id='followingListHelp' class='form-text text-muted'>You can always change this later on, no worries.</small>
