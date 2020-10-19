@@ -31,7 +31,7 @@ class Setup extends Component {
     const followingText = settings.following ? settings.following.map(t => `@${t}`).join(' ') : ''
 
     return (
-      <form onSubmit={e => this.handleSubmitSetup(e)}>
+      <form class='mt-5' onSubmit={e => this.handleSubmitSetup(e)}>
         <div class='row'>
           <div class='col-lg-6 form-group mb-5'>
             <label for='twitterHandle' class='col-form-label'>
