@@ -22,6 +22,7 @@ class Setup extends Component {
       state.updateUserSettings(options)
         .then(() => state.getUserTimeline({ force: true }))
         .then(() => route('/'))
+        // .then(() => state.)
     }
   }
 

@@ -1,9 +1,9 @@
 import { h, Component } from 'preact'
-import { useState } from 'preact/hooks'
 import { Link } from 'preact-router'
 import { login, logout } from '../auth-service'
 import { trackEvent } from '../analytics'
 import styles from './header.css'
+import useStore from '../store'
 
 function svgLoading () {
   return (
@@ -26,12 +26,13 @@ function svgMenu () {
 
 class Header extends Component {
   render (props) {
-    const [closed, setClosed] = useState(true)
+    const toggleHeaderClosed = useStore.getState(state => state.toggleHeaderClosed)
+    const closed = useStore.getState(state => state.headerClosed)
     return (
       <header>
         <nav class={'navbar navbar-white bg-white static-top fixed-top ' + `${styles.nav} ${closed ? styles.notVisible : styles.visible}`}>
           <div class='container'>
-            <a class='navbar-brand bg-white p-2 text-dark font-weight-bold' href='/' style='font-size: 2.1rem;' onClick={() => setClosed(closed => !closed)}>
+            <a class='navbar-brand bg-white p-2 text-dark font-weight-bold' href='/' style='font-size: 2.1rem;' onClick={toggleHeaderClosed}>
               <img class='' src='/assets/icons/favicon-32x32.png' alt='' style='height: 2rem; margin-right: 0.5em;' />
             </a>
             <div class='bg-white p-2'>
@@ -40,7 +41,7 @@ class Header extends Component {
             </div>
           </div>
         </nav>
-        <button tabIndex={0} style='z-index: 9999;' class={styles.toggle + ' btn btn-sm bg-white rounded'} onClick={() => setClosed(closed => !closed)}>
+        <button tabIndex={0} style='z-index: 9999;' class={styles.toggle + ' btn btn-sm bg-white rounded'} onClick={toggleHeaderClosed}>
           {props.icon ? props.icon : (props.loading ? svgLoading() : svgMenu())}
         </button>
       </header>

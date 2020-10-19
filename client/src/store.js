@@ -4,6 +4,10 @@ import create from 'zustand'
 
 export default create((set, get) => ({
   loading: false,
+  headerClosed: true,
+  toggleHeaderClosed () {
+    set({ headerClosed: !get().headerClosed })
+  },
   icon: undefined,
   setLoading (loading) { set({ loading }) },
   user: undefined,
