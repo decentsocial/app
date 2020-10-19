@@ -21,8 +21,8 @@ class Setup extends Component {
       const state = useStore.getState()
       state.updateUserSettings(options)
         .then(() => state.getUserTimeline({ force: true }))
-        .then(() => route('/'))
         .then(() => state.toggleHeaderClosed())
+        .then(() => route('/'))
     }
   }
 
