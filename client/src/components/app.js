@@ -61,13 +61,15 @@ export default class App extends Component {
   render () {
     if (window.location.hash && window.location.hash.length > 1) return null
     trackEvent('rendered-timeline')
+    const state = useStore.getState()
     const user = useStore(state => state.user)
     const timeline = useStore(state => state.timeline)
     const loading = useStore(state => state.loading)
     const icon = useStore(state => state.icon)
+    const headerClosed = useStore(state => state.headerClosed)
     return (
       <div class=''>
-        <Header user={user} loading={loading} icon={icon} />
+        <Header user={user} closed={headerClosed} toggle={() => state.toggleHeaderClosed()} loading={loading} icon={icon} />
         <Router>
           <Home path='/' user={user} timeline={this.state.filteredTimeline || timeline} />
           <Settings path='/settings' user={user} />
