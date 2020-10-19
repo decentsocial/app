@@ -1,4 +1,5 @@
 import { h, Component } from 'preact'
+import { route } from 'preact-router'
 // import { updateUserSettings } from '../api-service'
 import useStore from '../store'
 
@@ -20,6 +21,7 @@ class Setup extends Component {
       const state = useStore.getState()
       state.updateUserSettings(options)
         .then(() => state.getUserTimeline({ force: true }))
+        .then(() => route('/'))
     }
   }
 
