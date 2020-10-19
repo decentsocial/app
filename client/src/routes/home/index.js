@@ -16,7 +16,13 @@ const Home = (props) => {
   return (
     <div class='container text-center'>
       {props.user === null && <MainFeatures />}
-      {props.user && !props.user.setupComplete && <Setup user={props.user} />}
+      {props.user && !props.user.setupComplete && (
+        <div class='mt-5'>
+          <h1 class='title'>Welcome to Decent.social!</h1>
+          <h3 class='title'>One more step and you're ready to enjoy your decent timeline</h3>
+          <Setup user={props.user} />
+        </div>
+      )}
       {props.user && props.user.setupComplete && Array.isArray(props.timeline) && props.timeline.length > 0 &&
         <Timeline user={props.user} timeline={props.timeline} retweets={false} replies={false} />}
       {(Array.isArray(props.timeline) && props.timeline.length === 0 && props.user === undefined) && <DummyTweets />}
