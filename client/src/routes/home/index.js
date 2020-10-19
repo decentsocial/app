@@ -18,10 +18,10 @@ const Home = (props) => {
   return (
     <div class='container text-center'>
       {props.user === null && <MainFeatures />}
-      {(Array.isArray(props.timeline) && props.timeline.length === 0 && props.user !== null) && <DummyTweets />}
       {props.user && !props.user.setupComplete && <Setup user={props.user} />}
       {props.user && props.user.setupComplete && Array.isArray(props.timeline) && props.timeline.length > 0 &&
         <Timeline user={props.user} timeline={props.timeline} retweets={false} replies={false} />}
+      {(Array.isArray(props.timeline) && props.timeline.length === 0 && props.user === undefined) && <DummyTweets />}
     </div>
   )
 }
