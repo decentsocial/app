@@ -25,7 +25,6 @@ class Setup extends Component {
 
   render (props) {
     if (!props.user) return null
-    console.log('setup props.user', props.user)
 
     const { settings } = props.user
     const followingText = settings.following ? settings.following.map(t => `@${t}`).join(' ') : ''

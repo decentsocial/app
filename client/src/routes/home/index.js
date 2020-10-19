@@ -13,8 +13,6 @@ const Home = (props) => {
     )
   }
 
-  console.log('props.user', props.user)
-
   return (
     <div class='container text-center'>
       {props.user === null && <MainFeatures />}
