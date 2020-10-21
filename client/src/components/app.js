@@ -27,7 +27,7 @@ export default class App extends Component {
     state.getUserInfo()
     state.loadCachedTimeline()
     state.getUserTimeline()
-    this.intervalHandle = setInterval(() => state.getUserTimeline(), 1000 * 60)
+    this.intervalHandle = setInterval(() => state.getUserTimeline(), 1000 * 60 * 5)
   }
   componentWillUnmount () {
     clearInterval(this.intervalHandle)
