@@ -13,5 +13,5 @@ async function main (HTTP_PORT) {
   const server = await createServer()
   console.info('HTTP_PORT', HTTP_PORT)
   await server.listen(HTTP_PORT)
-  console.info(`server listening on http://0.0.0.0:${HTTP_PORT}`)
+  console.info(`server listening on http://localhost:${HTTP_PORT}`)
 }

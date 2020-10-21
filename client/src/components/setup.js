@@ -4,9 +4,9 @@ import { route } from 'preact-router'
 import useStore from '../store'
 
 class Setup extends Component {
-  handleSubmitSetup (event, loading) {
+  handleSubmitSetup (event, loadingSetup) {
     event.preventDefault()
-    if (loading) return
+    if (loadingSetup) return
 
     let twitterHandle = event.target.querySelector('#twitterHandle').value
     let following = event.target.querySelector('#following').value
@@ -21,21 +21,21 @@ class Setup extends Component {
       console.log('settings with options', options)
       const state = useStore.getState()
       state.updateUserSettings(options)
+        .then(() => route('/'))
         .then(() => state.getUserTimeline({ force: true }))
-        .then(() => { window.location.href = '/' })
     }
   }
 
   render (props) {
     if (!props.user) return null
 
-    const loading = useStore(state => state.loading)
+    const loadingSetup = useStore(state => state.loadingSetup)
 
     const { settings } = props.user
     const followingText = settings.following ? settings.following.map(t => `@${t}`).join(' ') : ''
 
     return (
-      <form class='mt-5' onSubmit={e => this.handleSubmitSetup(e, loading)}>
+      <form class='mt-5' onSubmit={e => this.handleSubmitSetup(e, loadingSetup)}>
         <div class='row'>
           <div class='col-lg-6 form-group mb-5'>
             <label for='twitterHandle' class='col-form-label'>
@@ -55,7 +55,8 @@ class Setup extends Component {
           </div>
         </div>
         <div class='col-sm-12 p-0'>
-          <button disabled={loading} class='btn btn-md btn-primary'>Complete setup</button>
+          <button disabled={loadingSetup} class='btn btn-md btn-primary'>{loadingSetup ? 'Working...' : (props.user.setupComplete ? 'Update' : 'Complete setup')}</button>
+          {loadingSetup ? <div>Preparing your timeline, one moment please</div> : null}
         </div>
       </form>
     )

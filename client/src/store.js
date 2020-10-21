@@ -4,6 +4,7 @@ import create from 'zustand'
 
 export default create((set, get) => ({
   loading: false,
+  loadingSetup: false,
   headerClosed: true,
   toggleHeaderClosed () {
     set({ headerClosed: !get().headerClosed })
@@ -20,13 +21,13 @@ export default create((set, get) => ({
       })
   },
   async updateUserSettings ({ twitterHandle, following } = {}) {
-    set({ loading: true })
+    set({ loading: true, loadingSetup: true })
     return ApiService.updateUserSettings({ twitterHandle, following })
       .then(settings => {
-        set({ user: { ...get().user, settings }, loading: false })
+        set({ user: { ...get().user, settings }, loading: false, loadingSetup: false })
       })
       .catch(err => {
-        set({ loading: false })
+        set({ loading: false, loadingSetup: false })
         window.debug && console.error(err.message)
       })
   },

@@ -25,7 +25,7 @@ const Home = (props) => {
       )}
       {props.user && props.user.setupComplete && Array.isArray(props.timeline) && props.timeline.length > 0 &&
         <Timeline user={props.user} timeline={props.timeline} retweets={false} replies={false} />}
-      {(Array.isArray(props.timeline) && props.timeline.length === 0 && (props.user || props.loadingTimeline)) && <DummyTweets />}
+      {(Array.isArray(props.timeline) && props.timeline.length === 0 && props.loadingTimeline) && <DummyTweets />}
     </div>
   )
 }
