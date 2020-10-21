@@ -30,6 +30,7 @@ export default create((set, get) => ({
         window.debug && console.error(err.message)
       })
   },
+  loadingTimeline: false,
   timeline: [],
   since: undefined,
   loadCachedTimeline () {
@@ -48,7 +49,7 @@ export default create((set, get) => ({
     }
   },
   async getUserTimeline ({ force = false } = {}) {
-    set({ loading: true })
+    set({ loadingTimeline: true, loading: true })
     let since = force ? undefined : get().since
     return ApiService.getUserTimeline({ since })
       .then(timeline => {
@@ -59,13 +60,13 @@ export default create((set, get) => ({
         if (timeline && timeline.length > 0) {
           since = timeline.reduce((newest, curr) => newest < +new Date(curr.time) ? +new Date(curr.time) : newest, +new Date(timeline[0].date))
         }
-        set({ timeline, since, loading: false, icon: svgCheck() })
+        set({ timeline, since, loadingTimeline: false, loading: false, icon: svgCheck() })
         setTimeout(() => set({ icon: undefined }), 1000)
         window.localStorage.setItem('timeline', JSON.stringify(timeline))
       })
       .catch(err => {
         console.error(err)
-        set({ icon: undefined, loading: false })
+        set({ icon: undefined, loadingTimeline: false, loading: false })
       })
   }
 }))

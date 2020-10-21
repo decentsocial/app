@@ -65,13 +65,14 @@ export default class App extends Component {
     const user = useStore(state => state.user)
     const timeline = useStore(state => state.timeline)
     const loading = useStore(state => state.loading)
+    const loadingTimeline = useStore(state => state.loadingTimeline)
     const icon = useStore(state => state.icon)
     const headerClosed = useStore(state => state.headerClosed)
     return (
       <div class=''>
         <Header user={user} closed={headerClosed} toggle={() => state.toggleHeaderClosed()} loading={loading} icon={icon} />
         <Router>
-          <Home path='/' user={user} timeline={this.state.filteredTimeline || timeline} />
+          <Home path='/' user={user} timeline={this.state.filteredTimeline || timeline} loadingTimeline={loadingTimeline} />
           <Settings path='/settings' user={user} />
           <Status path='/status/:id' timeline={timeline} />
         </Router>
