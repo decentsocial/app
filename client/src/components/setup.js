@@ -21,8 +21,8 @@ class Setup extends Component {
       console.log('settings with options', options)
       const state = useStore.getState()
       state.updateUserSettings(options)
-        .then(() => route('/'))
         .then(() => state.getUserTimeline({ force: true }))
+        .then(() => { window.location.href = '/' })
     }
   }
 
