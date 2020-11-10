@@ -84,7 +84,7 @@ export default create((set, get) => ({
         })
       })
   },
-  async stripeCheckout () {
+  async checkoutSession () {
     const stripe = get().stripe
     const basicPriceId = get().basicPriceId
     console.log('checking out', basicPriceId)
