@@ -71,7 +71,7 @@ export function getCheckoutSession (sessionId) {
 
 export function postCreateCheckoutSession (priceId) {
   if (!getAccessToken()) throw new Error('no access token')
-  return json(base('/checkout-session'), options({
+  return json(base('/create-checkout-session'), options({
     method: 'POST',
     body: JSON.stringify({
       priceId: priceId
