@@ -36,7 +36,7 @@ class Header extends Component {
             <div class='bg-white p-2'>
               {props.user && props.user.picture && <Link href='/' onClick={props.toggle || Function.prototype}><img src={props.user.picture} class='px-3' style='height: 2.5em; border-radius: 50%;' /></Link>}
               {props.user && props.user.picture && <Link href='/settings' class='btn btn-sm'>Settings</Link>}
-              <Link href='/pro' class='btn btn-sm'>PRO</Link>
+              {props.user && props.user.picture && <Link href='/pro' class='btn btn-sm'>PRO</Link>}
               <a href='#' onClick={() => { props.user ? logout() : login() }} class='btn btn-sm'>{props.user ? 'Logout' : 'Login'}</a>
             </div>
           </div>
