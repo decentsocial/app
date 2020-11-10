@@ -1,5 +1,5 @@
 import { h, Component } from 'preact'
-import { Router } from 'preact-router'
+import { Router, route } from 'preact-router'
 import { GlobalHotKeys } from 'react-hotkeys'
 
 import { trackEvent } from '../analytics'
@@ -26,20 +26,25 @@ export default class App extends Component {
   componentDidMount () {
     const state = useStore.getState()
 
-    const urlParams = new URLSearchParams(window.location.search)
-    const sessionId = urlParams.get('session_id')
-    if (sessionId) {
-      console.log('main -> completing payment process with session id', sessionId)
-      return state.checkoutSession(sessionId)
-        .catch(err => {
-          console.error('main -> an error occurred', err)
-        })
-    }
-  
-    state.getUserInfo()
-    state.getStripeSetup()
     state.loadCachedTimeline()
-    state.getUserTimeline()
+
+    state.getUserInfo()
+    .then(() => {
+      state.getStripeSetup()
+        .then(() => {
+          const urlParams = new URLSearchParams(window.location.search)
+          const sessionId = urlParams.get('session_id')
+          if (sessionId) {
+            console.log('main -> completing payment process with session id', sessionId)
+            return state.getCheckoutSession(sessionId)
+            .then(() => route('/'))
+              .catch(err => {
+                console.error('main -> an error occurred', err)
+              })
+          }    
+        })
+      state.getUserTimeline()
+    })
     this.intervalHandle = setInterval(() => state.getUserTimeline(), 1000 * 60 * 5)
   }
   componentWillUnmount () {
@@ -89,6 +94,7 @@ export default class App extends Component {
           <Settings path='/settings' user={user} />
           <Pro path='/pro' user={user} />
           <Status path='/status/:id' timeline={timeline} />
+          <Home default user={user} timeline={this.state.filteredTimeline || timeline} loadingTimeline={loadingTimeline} />
         </Router>
         <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />
         {this.state.search && 

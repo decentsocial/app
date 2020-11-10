@@ -82,21 +82,38 @@ export default create((set, get) => ({
           basicPriceId: json.basicPriceId,
           stripe: await loadStripe(json.publishableKey)
         })
+        return json
       })
   },
   async checkoutSession () {
     const stripe = get().stripe
     const basicPriceId = get().basicPriceId
     console.log('checking out', basicPriceId)
-    createCheckoutSession(basicPriceId).then(function (data) {
-      console.log('action -> pro result', data)
-      // Call Stripe.js method to redirect to the new Checkout page
-      stripe.redirectToCheckout({ sessionId: data.sessionId })
-    })
-
-    function createCheckoutSession (priceId) {
-      return ApiService.postCreateCheckoutSession(priceId)
-    }
+    return ApiService.postCreateCheckoutSession(basicPriceId)
+      .then(function (data) {
+        console.log('action -> pro result', data)
+        // Call Stripe.js method to redirect to the new Checkout page
+        stripe.redirectToCheckout({ sessionId: data.sessionId })
+      })
+  },
+  async getCheckoutSession (sessionId) {
+    return ApiService.getCheckoutSession(sessionId)
+      .then(session => {
+        const sessionJSON = JSON.stringify(session, null, 2)
+        window.localStorage.setItem('session', sessionJSON)
+        // document.querySelector("pre").textContent = sessionJSON;
+        return ApiService.saveCheckoutSession(session)
+      })
+      // .then(checkoutSession => {
+      //   console.log('checkoutSession', checkoutSession)
+      //   if (checkoutSession && checkoutSession.checkout) {
+      //     if (checkoutSession.checkout.payment_status === 'paid') {
+      //       console.log('succesfully subscribed!')
+      //       return true
+      //     }
+      //   }
+      //   return checkoutSession
+      // })
   }
 }))
 
