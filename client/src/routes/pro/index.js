@@ -10,7 +10,7 @@ const Pro = (props) => {
       <h1 class='title'>Pro</h1>
       {props.user.pro
         ? <p>You're already PRO! 💥</p>
-        : <a class='btn btn-danger' onClick={state.stripeCheckout}>Become PRO for 2.99$ / month</a>}
+        : <a class='btn btn-danger' onClick={state.checkoutSession}>Become PRO for 2.99$ / month</a>}
     </div>
   )
 }
