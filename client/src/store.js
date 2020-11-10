@@ -1,6 +1,7 @@
 import * as ApiService from './api-service'
 
 import create from 'zustand'
+import { loadStripe } from '@stripe/stripe-js'
 
 export default create((set, get) => ({
   loading: false,
@@ -69,6 +70,33 @@ export default create((set, get) => ({
         console.error(err)
         set({ icon: undefined, loadingTimeline: false, loading: false })
       })
+  },
+  publishableKey: undefined,
+  basicPriceId: undefined,
+  stripe: undefined,
+  async getStripeSetup () {
+    return ApiService.getSetup()
+      .then(async json => {
+        set({
+          publishableKey: json.publishableKey,
+          basicPriceId: json.basicPriceId,
+          stripe: await loadStripe(json.publishableKey)
+        })
+      })
+  },
+  async stripeCheckout () {
+    const stripe = get().stripe
+    const basicPriceId = get().basicPriceId
+    console.log('checking out', basicPriceId)
+    createCheckoutSession(basicPriceId).then(function (data) {
+      console.log('action -> pro result', data)
+      // Call Stripe.js method to redirect to the new Checkout page
+      stripe.redirectToCheckout({ sessionId: data.sessionId })
+    })
+
+    function createCheckoutSession (priceId) {
+      return ApiService.postCreateCheckoutSession(priceId)
+    }
   }
 }))
 

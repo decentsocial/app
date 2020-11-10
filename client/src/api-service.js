@@ -6,6 +6,7 @@ const json = (path, opt) => window.fetch(base(path), opt).then(res => res.json()
 const options = ({ Authorization = `Bearer ${getAccessToken()}`, method = 'get', body } = {}) => ({
   method,
   body,
+  credentials: 'include',
   headers: {
     Authorization,
     Accept: 'application/json',
@@ -47,5 +48,33 @@ export async function updateUserSettings ({ twitterHandle, following } = {}) {
   return json(base('/user/settings'), options({
     method: 'put',
     body: JSON.stringify({ twitterHandle, following })
+  }))
+}
+
+export async function getSetup () {
+  if (!getAccessToken()) throw new Error('no access token')
+  return json(base('/setup'), options())
+}
+
+export async function saveCheckoutSession (session = {}) {
+  if (!getAccessToken()) throw new Error('no access token')
+  return json(base('/checkout-session'), options({
+    method: 'POST',
+    body: JSON.stringify(session)
+  }))
+}
+
+export function getCheckoutSession (sessionId) {
+  if (!getAccessToken()) throw new Error('no access token')
+  return json(base('/checkout-session?sessionId=' + sessionId), options())
+}
+
+export function postCreateCheckoutSession (priceId) {
+  if (!getAccessToken()) throw new Error('no access token')
+  return json(base('/checkout-session'), options({
+    method: 'POST',
+    body: JSON.stringify({
+      priceId: priceId
+    })
   }))
 }

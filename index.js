@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 require('dotenv').config()
 
-const HTTP_PORT = +(process.env.HTTP_PORT || 4000)
+const HTTP_PORT = +(process.env.HTTP_PORT || 3000)
 const createServer = require('./lib/server')
 
 main(HTTP_PORT)

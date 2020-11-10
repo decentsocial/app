@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from '../routes/home'
 import Settings from '../routes/settings'
 import Status from '../routes/status'
+import Pro from '../routes/pro'
 
 import useStore from '../store'
 
@@ -24,7 +25,19 @@ export default class App extends Component {
 
   componentDidMount () {
     const state = useStore.getState()
+
+    const urlParams = new URLSearchParams(window.location.search)
+    const sessionId = urlParams.get('session_id')
+    if (sessionId) {
+      console.log('main -> completing payment process with session id', sessionId)
+      return state.checkoutSession(sessionId)
+        .catch(err => {
+          console.error('main -> an error occurred', err)
+        })
+    }
+  
     state.getUserInfo()
+    state.getStripeSetup()
     state.loadCachedTimeline()
     state.getUserTimeline()
     this.intervalHandle = setInterval(() => state.getUserTimeline(), 1000 * 60 * 5)
@@ -74,6 +87,7 @@ export default class App extends Component {
         <Router>
           <Home path='/' user={user} timeline={this.state.filteredTimeline || timeline} loadingTimeline={loadingTimeline} />
           <Settings path='/settings' user={user} />
+          <Pro path='/pro' user={user} />
           <Status path='/status/:id' timeline={timeline} />
         </Router>
         <GlobalHotKeys keyMap={this.keyMap} handlers={this.handlers} />
